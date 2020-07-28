@@ -21,7 +21,7 @@ namespace Recorder
 
             if (result == DialogResult.OK)
             {
-                Application.Run(new Form1());
+                Application.Run(new Recorder_Tab_OfflineRecording());
             }
         }
     }

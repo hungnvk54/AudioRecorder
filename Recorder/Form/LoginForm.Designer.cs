@@ -45,47 +45,53 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(345, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 17);
+            this.label1.Size = new System.Drawing.Size(93, 22);
             this.label1.TabIndex = 0;
             this.label1.Text = "Đăng nhập";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(122, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 17);
+            this.label2.Size = new System.Drawing.Size(124, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tên đăng nhập";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(122, 155);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 17);
+            this.label3.Size = new System.Drawing.Size(82, 22);
             this.label3.TabIndex = 2;
             this.label3.Text = "Mật khẩu";
             // 
             // Login_TB_UserName
             // 
+            this.Login_TB_UserName.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_TB_UserName.Location = new System.Drawing.Point(268, 104);
             this.Login_TB_UserName.Name = "Login_TB_UserName";
-            this.Login_TB_UserName.Size = new System.Drawing.Size(390, 22);
+            this.Login_TB_UserName.Size = new System.Drawing.Size(390, 30);
             this.Login_TB_UserName.TabIndex = 3;
             // 
             // Login_TB_Password
             // 
+            this.Login_TB_Password.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_TB_Password.Location = new System.Drawing.Point(268, 155);
             this.Login_TB_Password.Name = "Login_TB_Password";
             this.Login_TB_Password.PasswordChar = '*';
-            this.Login_TB_Password.Size = new System.Drawing.Size(390, 22);
+            this.Login_TB_Password.Size = new System.Drawing.Size(390, 30);
             this.Login_TB_Password.TabIndex = 4;
             // 
             // Login_BT_Login
             // 
+            this.Login_BT_Login.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Login_BT_Login.Location = new System.Drawing.Point(268, 233);
             this.Login_BT_Login.Name = "Login_BT_Login";
             this.Login_BT_Login.Size = new System.Drawing.Size(112, 34);
@@ -97,9 +103,10 @@
             // LoginForm_CB_SavePassword
             // 
             this.LoginForm_CB_SavePassword.AutoSize = true;
+            this.LoginForm_CB_SavePassword.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginForm_CB_SavePassword.Location = new System.Drawing.Point(268, 194);
             this.LoginForm_CB_SavePassword.Name = "LoginForm_CB_SavePassword";
-            this.LoginForm_CB_SavePassword.Size = new System.Drawing.Size(116, 21);
+            this.LoginForm_CB_SavePassword.Size = new System.Drawing.Size(137, 26);
             this.LoginForm_CB_SavePassword.TabIndex = 5;
             this.LoginForm_CB_SavePassword.Text = "Lưu mật khẩu";
             this.LoginForm_CB_SavePassword.UseVisualStyleBackColor = true;
@@ -112,7 +119,7 @@
             this.menuToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(800, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(782, 30);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -120,14 +127,15 @@
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settinToolStripMenuItem});
+            this.menuToolStripMenuItem.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
-            this.menuToolStripMenuItem.Size = new System.Drawing.Size(60, 24);
+            this.menuToolStripMenuItem.Size = new System.Drawing.Size(68, 26);
             this.menuToolStripMenuItem.Text = "Menu";
             // 
             // settinToolStripMenuItem
             // 
             this.settinToolStripMenuItem.Name = "settinToolStripMenuItem";
-            this.settinToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.settinToolStripMenuItem.Size = new System.Drawing.Size(148, 26);
             this.settinToolStripMenuItem.Text = "Setting";
             this.settinToolStripMenuItem.Click += new System.EventHandler(this.settinToolStripMenuItem_Click);
             // 
@@ -144,7 +152,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 367);
+            this.ClientSize = new System.Drawing.Size(782, 318);
             this.Controls.Add(this.LoginForm_LB_Info);
             this.Controls.Add(this.LoginForm_CB_SavePassword);
             this.Controls.Add(this.Login_BT_Login);
@@ -155,6 +163,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(800, 365);
+            this.MinimumSize = new System.Drawing.Size(800, 365);
             this.Name = "LoginForm";
             this.Text = "Đăng nhập";
             this.menuStrip1.ResumeLayout(false);

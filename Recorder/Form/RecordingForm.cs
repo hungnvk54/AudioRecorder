@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -6,11 +7,13 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using NAudio.Wave;
+using Recorder.Controller;
 using WebSocketSharp;
+using System.Text.RegularExpressions;
 
 namespace Recorder
 {
-    public partial class Form1 : Form
+    public partial class Recorder_Tab_OfflineRecording : Form
     {
         private enum RecordingState
         {
@@ -26,6 +29,7 @@ namespace Recorder
 
         private AudioStreamer mAudioStreamer = null;
         private Recorder mAudioRecorder = null;
+        private AudioWriter mAudioWriter = null;
 
         /// Session Info
         private string mSessionId;
@@ -40,7 +44,7 @@ namespace Recorder
         public delegate void DUpdateMicValueBar(float volume);
         //Websocket 
         private Queue<WaveInEventArgs> mErrorBufferData;
-        public Form1()
+        public Recorder_Tab_OfflineRecording()
         {
             InitializeComponent();
 
@@ -66,12 +70,31 @@ namespace Recorder
         {
             if (e.ProgressPercentage == 0)
             {
-                Logger.GetInstance().Logging.Warn("Init system failed");
+                Logger.GetInstance().Logging.Warn("Không thể khởi tạo thông tin phiên\n" +
+                    "Tạo phiên mới hoặc xóa thông tin cũ và thử lại");
                 ///Connection errrors. Close all connection
-                MessageBox.Show("Khởi tạo hệ thống không thành công", "Thông tin phiên",
+                MessageBox.Show("Không thể khởi tạo thông tin phiên\n" +
+                    "Tạo phiên mới hoặc xóa thông tin cũ và thử lại", "Thông tin phiên",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } else if (e.ProgressPercentage == 1)
+            {
+                Logger.GetInstance().Logging.Warn("Không kết nối được Server.\n" +
+                    "Kiểm tra lại cấu hình server dịch");
+                ///Connection errrors. Close all connection
+                MessageBox.Show("Không kết nối được Server.\n" +
+                    "Kiểm tra lại cấu hình server dịch", "Thông tin phiên",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+            if (e.ProgressPercentage == 2)
+            {
+                Logger.GetInstance().Logging.Warn("Không khởi tạo được thiết bị ghi âm.\n" +
+                    "Kiểm tra lại cấu hình thiết bị ghi âm");
+                ///Connection errrors. Close all connection
+                MessageBox.Show("Không thể khởi tạo thông tin phiên\n" +
+                    "Tạo phiên mới hoặc xóa thông tin cũ và thử lại", "Thông tin phiên",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (e.ProgressPercentage == 4)
             {
                 ///Connection ok.
                 InitRecordingGui();
@@ -89,6 +112,8 @@ namespace Recorder
             RT_FullSentence.Text = "";
             mErrorBufferData.Clear();
             CreateTimerCounter();
+            // Set cursor as default arrow
+            Cursor.Current = Cursors.Default;
         }
 
         private void InitRecordingIdle()
@@ -98,21 +123,20 @@ namespace Recorder
             mIsCapture = RecordingState.IDLE;
             BT_Pause.Enabled = false;
             DestroyTimerCounter();
+            // Set cursor as default arrow
+            Cursor.Current = Cursors.Default;
         }
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             Logger.GetInstance().Logging.Error(String.Format("Cannot init the session {0}", e.Error));
             ///Close all connection
+            if (e.Cancelled)
+            {
+                ConvertToMp3();
+            }
             StopRecording();
             InitRecordingIdle();
-        }
-
-        private void settingToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ///Open form to setting the url
-            var setting = new SettingForm();
-            setting.ShowDialog();
         }
 
         private void BT_Start_Click(object sender, EventArgs e)
@@ -123,6 +147,7 @@ namespace Recorder
                 //Stop capture here
                 if (mBackgroundWorker.IsBusy)
                 {
+                    Cursor.Current = Cursors.WaitCursor;
                     Logger.GetInstance().Logging.Info("Cancelling the Thread");
                     mBackgroundWorker.CancelAsync();
                 }
@@ -134,6 +159,8 @@ namespace Recorder
             }
             else
             {
+                // Set cursor as default arrow
+                Cursor.Current = Cursors.WaitCursor;
                 bool condition = CheckCondition();
                 if (condition == true)
                 {
@@ -149,6 +176,7 @@ namespace Recorder
             DestroyAudioRecorder();
             DestroyAudioStreamer();
             CloseSessionInfo();
+            DestroyAudioWriter();
         }
 
         private void StartRecording(object sender, DoWorkEventArgs e)
@@ -167,23 +195,31 @@ namespace Recorder
             if (isSuccessfull == false)
             {
                 Logger.GetInstance().Logging.Warn("Cannot create audio streammer");
-                worker.ReportProgress(0);
+                worker.ReportProgress(1);
                 return;
             }
             isSuccessfull = CreateAudioRecorder();
             if (isSuccessfull == false)
             {
                 Logger.GetInstance().Logging.Warn("Cannot create audio recorder");
-                worker.ReportProgress(0);
+                worker.ReportProgress(2);
                 return;
             }
             isSuccessfull = CreateTimerCounter();
             if (isSuccessfull == false)
             {
-                worker.ReportProgress(0);
+                worker.ReportProgress(3);
                 return;
             }
-            worker.ReportProgress(1);
+
+            isSuccessfull = CreateAudioWriter();
+            if (isSuccessfull == false)
+            {
+                worker.ReportProgress(5);
+                return;
+            }
+
+            worker.ReportProgress(4);
             while (worker.CancellationPending == false)
             {
                 Thread.Sleep(1000);
@@ -231,12 +267,12 @@ namespace Recorder
                 //Request to check the session
             } catch(FormatException e)
             {
-                MessageBox.Show("Thông tin phiên không chính xác", "Thông tin phiên",
+                MessageBox.Show("Thông tin phiên không chính xác\n" + e.Message, "Thông tin phiên",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             } catch(ArgumentNullException e)
             {
-                MessageBox.Show("Thông tin phiên không chính xác", "Thông tin phiên",
+                MessageBox.Show("Thông tin phiên không chính xác\n" + e.Message, "Thông tin phiên",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -248,14 +284,14 @@ namespace Recorder
             }
             catch (FormatException e)
             {
-                MessageBox.Show("Độ dài audio không chính xác", "Độ dài audio",
+                MessageBox.Show("Độ dài audio không chính xác\n" + e.Message, "Độ dài audio",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
             catch (ArgumentNullException e)
             {
 
-                MessageBox.Show("Độ dài audio không chính xác", "Độ dài audio",
+                MessageBox.Show("Độ dài audio không chính xác\n" + e.Message, "Độ dài audio",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -270,6 +306,23 @@ namespace Recorder
             {
                 MessageBox.Show("Tên tệp không được bỏ trống", "Tên tệp",
                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else
+            {
+                Regex check_pattern = new Regex(@"[\[\]/\\!@#$%^&*()]", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+                MatchCollection matches = check_pattern.Matches(TB_FileName.Text.Trim());
+
+                if (matches.Count > 0)
+                {
+                    MessageBox.Show("Tên tệp không được chứa các ký tự đặc biệt []/\\!@#$%^&*()", "Tên tệp",
+                       MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
+            }
+
+            if (ValidateExistFile() != true)
+            {
                 return false;
             }
 
@@ -341,6 +394,49 @@ namespace Recorder
         }
 
 
+        private bool CreateAudioWriter()
+        {
+            string audio_path = Path.Combine(Settings.GetInstance().DataDir, mAudioName + ".wav");
+            mAudioWriter = new AudioWriter(audio_path);
+            return true;
+        }
+
+        private void ConvertToMp3()
+        {
+            string audio_path = Path.Combine(Settings.GetInstance().DataDir, mAudioName + ".wav");
+            string mp3Path = Path.Combine(Settings.GetInstance().DataDir, mAudioName + ".mp3");
+            if (mAudioWriter != null)
+            {
+                mAudioWriter.Dispose(); //Release file 
+                mAudioWriter.WavToMP3(audio_path, mp3Path);
+            }
+        }
+
+        private bool DestroyAudioWriter()
+        {
+            if (mAudioWriter != null)
+            {
+                mAudioWriter.Dispose();
+                mAudioWriter = null;
+            }
+            return true;
+        }
+
+        private bool ValidateExistFile()
+        {
+            // Audio path
+            string audio_path = Path.Combine(Settings.GetInstance().DataDir, mAudioName + ".wav");
+            if (File.Exists(audio_path))
+            {
+                DialogResult dr = MessageBox.Show("Tệp âm thanh đã tồn tại \n" +
+                    "Bạn có muốn ghi đè?", "Hệ thống", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.No) return false;
+                return true;
+            }
+
+            return true;
+        }
+
         public void OnTimerEvent(object source, EventArgs e)
         {
             Logger.GetInstance().Logging.Info(String.Format("Time stamp {0}", mTimeCounter));
@@ -380,6 +476,13 @@ namespace Recorder
                     mErrorBufferData.Enqueue(args);
                 }
 
+            }
+            if (this.RecordingForm_CB_SaveAudio.Checked)
+            {
+                if (mAudioWriter != null)
+                {
+                    mAudioWriter.WriteStream(args.Buffer, args.BytesRecorded);
+                }
             }
         }
 
@@ -529,6 +632,33 @@ namespace Recorder
         private void TB_FileName_TextChanged(object sender, EventArgs e)
         {
             mAudioName = TB_FileName.Text;
+        }
+
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (mIsCapture == RecordingState.IDLE)
+            {
+                DialogResult dr = MessageBox.Show("Bạn có muốn tắt chương trình?", "Hệ thống", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.No) e.Cancel = true;
+            } else if (mIsCapture == RecordingState.RECORDED)
+            {
+                MessageBox.Show("Không thể đóng khi đang ghi âm\n" +
+                    "Kết thúc ghi âm rồi thử lại", "Hệ thống", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                e.Cancel = true;
+            } else if( mIsCapture == RecordingState.STARTING)
+            {
+                DialogResult dr = MessageBox.Show("Hệ thống đang khởi tạo \nBạn có muốn tắt chương trình?", "Hệ thống", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.No)
+                {
+                    e.Cancel = true;
+                }
+                else
+                {
+                    StopRecording();
+                }
+            }
         }
     }
 }

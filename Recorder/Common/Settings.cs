@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Configuration;
-
+using WebSocketSharp;
+using System.IO;
 
 namespace Recorder
 {
@@ -33,6 +34,7 @@ namespace Recorder
             AddUpdateAppSettings("mic", this.DefaultMic);
             AddUpdateAppSettings("audiolength", this.DefaultAudioLength);
             AddUpdateAppSettings("api", this.ApiUrl);
+            AddUpdateAppSettings("datadir", this.DataDir);
         }
 
         private void ReadingAllConfigure()
@@ -41,8 +43,13 @@ namespace Recorder
             this.DefaultMic = ReadSetting("mic", "wss://127.0.0.1"); 
             this.DefaultAudioLength = ReadSetting("audiolength", "wss://127.0.0.1");
             this.ApiUrl = ReadSetting("api", "https://127.0.0.1/bocbang");
+            this.DataDir = ReadSetting("datadir", "");
+            if (this.DataDir.IsNullOrEmpty())
+            {
+                this.DataDir = Directory.GetCurrentDirectory();
+            }
 
-            Logger.GetInstance().Logging.Info(this.WebsocketUrl);
+            Logger.GetInstance().Logging.Info("save directory: " + this.DataDir);
         }
         
         private string ReadSetting(string key, string defaultValue)
@@ -108,6 +115,11 @@ namespace Recorder
         public string AuthorizeToken
         {
             get;set;
+        }
+
+        public string DataDir
+        {
+            get; set;
         }
     }
 }

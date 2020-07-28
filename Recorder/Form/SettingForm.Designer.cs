@@ -33,12 +33,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.TB_WebsocketUrl = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TB_ApiUrl = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.BT_Cancel = new System.Windows.Forms.Button();
             this.BT_Save = new System.Windows.Forms.Button();
             this.CB_DefaultMic = new System.Windows.Forms.ComboBox();
             this.TB_DefaultAudioLength = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.TB_ApiUrl = new System.Windows.Forms.TextBox();
+            this.ConfigForm_TB_DataPath = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ConfigForm_BT_FolderBrower = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +81,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ConfigForm_BT_FolderBrower);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.ConfigForm_TB_DataPath);
             this.groupBox1.Controls.Add(this.TB_ApiUrl);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.BT_Cancel);
@@ -90,47 +96,17 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(776, 234);
+            this.groupBox1.Size = new System.Drawing.Size(776, 284);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cài đặt";
             // 
-            // BT_Cancel
+            // TB_ApiUrl
             // 
-            this.BT_Cancel.Location = new System.Drawing.Point(381, 194);
-            this.BT_Cancel.Name = "BT_Cancel";
-            this.BT_Cancel.Size = new System.Drawing.Size(88, 34);
-            this.BT_Cancel.TabIndex = 7;
-            this.BT_Cancel.Text = "Hủy";
-            this.BT_Cancel.UseVisualStyleBackColor = true;
-            this.BT_Cancel.Click += new System.EventHandler(this.BT_Cancel_Click);
-            // 
-            // BT_Save
-            // 
-            this.BT_Save.Location = new System.Drawing.Point(263, 194);
-            this.BT_Save.Name = "BT_Save";
-            this.BT_Save.Size = new System.Drawing.Size(90, 34);
-            this.BT_Save.TabIndex = 6;
-            this.BT_Save.Text = "Lưu";
-            this.BT_Save.UseVisualStyleBackColor = true;
-            this.BT_Save.Click += new System.EventHandler(this.BT_Save_Click);
-            // 
-            // CB_DefaultMic
-            // 
-            this.CB_DefaultMic.FormattingEnabled = true;
-            this.CB_DefaultMic.Location = new System.Drawing.Point(163, 151);
-            this.CB_DefaultMic.Name = "CB_DefaultMic";
-            this.CB_DefaultMic.Size = new System.Drawing.Size(417, 24);
-            this.CB_DefaultMic.TabIndex = 5;
-            // 
-            // TB_DefaultAudioLength
-            // 
-            this.TB_DefaultAudioLength.Location = new System.Drawing.Point(163, 110);
-            this.TB_DefaultAudioLength.Name = "TB_DefaultAudioLength";
-            this.TB_DefaultAudioLength.Size = new System.Drawing.Size(111, 22);
-            this.TB_DefaultAudioLength.TabIndex = 4;
-            this.TB_DefaultAudioLength.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            this.TB_DefaultAudioLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_DefaultAudioLength_KeyPress);
+            this.TB_ApiUrl.Location = new System.Drawing.Point(163, 70);
+            this.TB_ApiUrl.Name = "TB_ApiUrl";
+            this.TB_ApiUrl.Size = new System.Drawing.Size(594, 22);
+            this.TB_ApiUrl.TabIndex = 4;
             // 
             // label4
             // 
@@ -141,18 +117,74 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "ApiUrl";
             // 
-            // TB_ApiUrl
+            // BT_Cancel
             // 
-            this.TB_ApiUrl.Location = new System.Drawing.Point(163, 70);
-            this.TB_ApiUrl.Name = "TB_ApiUrl";
-            this.TB_ApiUrl.Size = new System.Drawing.Size(594, 22);
-            this.TB_ApiUrl.TabIndex = 9;
+            this.BT_Cancel.Location = new System.Drawing.Point(384, 235);
+            this.BT_Cancel.Name = "BT_Cancel";
+            this.BT_Cancel.Size = new System.Drawing.Size(88, 34);
+            this.BT_Cancel.TabIndex = 10;
+            this.BT_Cancel.Text = "Hủy";
+            this.BT_Cancel.UseVisualStyleBackColor = true;
+            this.BT_Cancel.Click += new System.EventHandler(this.BT_Cancel_Click);
+            // 
+            // BT_Save
+            // 
+            this.BT_Save.Location = new System.Drawing.Point(266, 235);
+            this.BT_Save.Name = "BT_Save";
+            this.BT_Save.Size = new System.Drawing.Size(90, 34);
+            this.BT_Save.TabIndex = 9;
+            this.BT_Save.Text = "Lưu";
+            this.BT_Save.UseVisualStyleBackColor = true;
+            this.BT_Save.Click += new System.EventHandler(this.BT_Save_Click);
+            // 
+            // CB_DefaultMic
+            // 
+            this.CB_DefaultMic.FormattingEnabled = true;
+            this.CB_DefaultMic.Location = new System.Drawing.Point(163, 151);
+            this.CB_DefaultMic.Name = "CB_DefaultMic";
+            this.CB_DefaultMic.Size = new System.Drawing.Size(417, 24);
+            this.CB_DefaultMic.TabIndex = 6;
+            // 
+            // TB_DefaultAudioLength
+            // 
+            this.TB_DefaultAudioLength.Location = new System.Drawing.Point(163, 110);
+            this.TB_DefaultAudioLength.Name = "TB_DefaultAudioLength";
+            this.TB_DefaultAudioLength.Size = new System.Drawing.Size(111, 22);
+            this.TB_DefaultAudioLength.TabIndex = 5;
+            this.TB_DefaultAudioLength.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.TB_DefaultAudioLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_DefaultAudioLength_KeyPress);
+            // 
+            // ConfigForm_TB_DataPath
+            // 
+            this.ConfigForm_TB_DataPath.Location = new System.Drawing.Point(163, 193);
+            this.ConfigForm_TB_DataPath.Name = "ConfigForm_TB_DataPath";
+            this.ConfigForm_TB_DataPath.Size = new System.Drawing.Size(417, 22);
+            this.ConfigForm_TB_DataPath.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 193);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 17);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Thư mục lưu Audio";
+            // 
+            // ConfigForm_BT_FolderBrower
+            // 
+            this.ConfigForm_BT_FolderBrower.Location = new System.Drawing.Point(586, 193);
+            this.ConfigForm_BT_FolderBrower.Name = "ConfigForm_BT_FolderBrower";
+            this.ConfigForm_BT_FolderBrower.Size = new System.Drawing.Size(38, 23);
+            this.ConfigForm_BT_FolderBrower.TabIndex = 8;
+            this.ConfigForm_BT_FolderBrower.Text = "...";
+            this.ConfigForm_BT_FolderBrower.UseVisualStyleBackColor = true;
+            this.ConfigForm_BT_FolderBrower.Click += new System.EventHandler(this.ConfigForm_BT_FolderBrower_Click);
             // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 277);
+            this.ClientSize = new System.Drawing.Size(800, 308);
             this.Controls.Add(this.groupBox1);
             this.Name = "SettingForm";
             this.Text = "SettingForm";
@@ -175,5 +207,8 @@
         private System.Windows.Forms.Button BT_Save;
         private System.Windows.Forms.TextBox TB_ApiUrl;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox ConfigForm_TB_DataPath;
+        private System.Windows.Forms.Button ConfigForm_BT_FolderBrower;
     }
 }

@@ -54,6 +54,8 @@ namespace Recorder
 
         private void Login_BT_Login_Click(object sender, EventArgs e)
         {
+            // Set cursor as hourglass
+            Cursor.Current = Cursors.WaitCursor;
             this.SaveInfo();
             string token = Request.RequestLogin(this.Login_TB_UserName.Text, this.Login_TB_Password.Text);
 
@@ -69,6 +71,8 @@ namespace Recorder
                 Settings.GetInstance().AuthorizeToken = token;
                 DialogResult = DialogResult.OK;
             }
+            // Set cursor as default arrow
+            Cursor.Current = Cursors.Default;
         }
 
         private void settinToolStripMenuItem_Click(object sender, EventArgs e)

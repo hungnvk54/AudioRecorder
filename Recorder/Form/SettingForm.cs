@@ -53,6 +53,7 @@ namespace Recorder
             Settings.GetInstance().DefaultAudioLength = TB_DefaultAudioLength.Text;
             Settings.GetInstance().DefaultMic = CB_DefaultMic.SelectedIndex.ToString();
             Settings.GetInstance().ApiUrl = TB_ApiUrl.Text;
+            Settings.GetInstance().DataDir = ConfigForm_TB_DataPath.Text;
             Settings.GetInstance().SaveConfigure();
 
             this.Close();
@@ -63,6 +64,17 @@ namespace Recorder
             this.Close();
         }
 
+        private void ConfigForm_BT_FolderBrower_Click(object sender, EventArgs e)
+        {
+            using (var fbd = new FolderBrowserDialog())
+            {
+                DialogResult result = fbd.ShowDialog();
 
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(fbd.SelectedPath))
+                {
+                    this.ConfigForm_TB_DataPath.Text = fbd.SelectedPath;
+                }
+            }
+        }
     }
 }

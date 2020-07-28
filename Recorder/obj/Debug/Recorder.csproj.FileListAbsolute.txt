@@ -1,6 +1,5 @@
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\Recorder.exe
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\Recorder.pdb
-D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.csprojAssemblyReference.cache
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.Properties.Resources.resources
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.csproj.GenerateResource.cache
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.csproj.CoreCompileInputs.cache
@@ -8,7 +7,6 @@ D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Reco
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.pdb
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\NAudio.dll
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\NAudio.xml
-D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.Form1.resources
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.csproj.CopyComplete
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\SuperSocket.ClientEngine.dll
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\Newtonsoft.Json.dll
@@ -23,3 +21,8 @@ D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\App.
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\log4net.config
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.LoginForm.resources
 D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\CredentialManagement.dll
+D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.Recorder_Tab_OfflineRecording.resources
+D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\libmp3lame.32.dll
+D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\libmp3lame.64.dll
+D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug\NAudio.Lame.dll
+D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\obj\Debug\Recorder.csprojAssemblyReference.cache
