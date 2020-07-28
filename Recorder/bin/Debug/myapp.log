@@ -1,0 +1,98 @@
+2020-07-27 14:58:37,893 [1] INFO Recorder.Logger - wss://127.0.0.1
+2020-07-27 15:10:08,300 [1] INFO Recorder.Logger - wss://127.0.0.1
+2020-07-27 16:00:47,381 [1] INFO Recorder.Logger - wss://127.0.0.1
+2020-07-27 16:06:53,561 [1] INFO Recorder.Logger - wss://127.0.0.1
+2020-07-27 16:07:14,913 [1] ERROR Recorder.Logger - System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 172.17.0.1:80
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at Recorder.Request.RequestLogin(String username, String password) in D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\Controller\Request.cs:line 227
+2020-07-27 16:07:14,915 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:07:48,623 [1] INFO Recorder.Logger - wss://127.0.0.1
+2020-07-27 16:08:23,044 [1] INFO Recorder.Logger - Saving configure ws:wss://bocbang.ap.ngrok.io
+2020-07-27 16:08:23,086 [1] INFO Recorder.Logger - Saving configure mic:0
+2020-07-27 16:08:23,101 [1] INFO Recorder.Logger - Saving configure audiolength:3
+2020-07-27 16:08:23,107 [1] INFO Recorder.Logger - Saving configure api:https://cnat.rikkei.org/bocbang5
+2020-07-27 16:08:32,382 [1] ERROR Recorder.Logger - System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Recorder.Request.RequestLogin(String username, String password) in D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\Controller\Request.cs:line 244
+2020-07-27 16:08:32,383 [1] ERROR Recorder.Logger - Cannot login to system
+2020-07-27 16:09:14,739 [1] ERROR Recorder.Logger - System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Recorder.Request.RequestLogin(String username, String password) in D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\Controller\Request.cs:line 244
+2020-07-27 16:09:14,739 [1] ERROR Recorder.Logger - Cannot login to system
+2020-07-27 16:16:11,210 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:16:11,795 [1] ERROR Recorder.Logger - System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Recorder.Request.RequestLogin(String username, String password) in D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\Controller\Request.cs:line 247
+2020-07-27 16:16:11,796 [1] ERROR Recorder.Logger - Cannot login to system
+2020-07-27 16:17:54,357 [1] ERROR Recorder.Logger - System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Recorder.Request.RequestLogin(String username, String password) in D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\Controller\Request.cs:line 247
+2020-07-27 16:17:54,357 [1] ERROR Recorder.Logger - Cannot login to system
+2020-07-27 16:20:03,503 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:20:03,933 [1] INFO Recorder.Logger - 
+2020-07-27 16:20:03,934 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc3NjAzfQ.5y1ij0I2f0k6G963HN8A1q5lL6gkftXRQsZNT0JvsjdXmJNhi2bYNJfMVny8DcOUan6xU2ElvIVcqPnISgxWGA", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:20:04,297 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:25:24,681 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:25:25,131 [1] INFO Recorder.Logger - 
+2020-07-27 16:25:25,132 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc3OTI0fQ.FwmXtRAKJjzZkYpXfvAKzv0dk5_1-FJvhR5XrkPc3Uhk0EXy5I5gMDJZGEqIrEp9VP5EL-dtqI-Np_gQHG4DgQ", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:25:25,370 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:28:35,702 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:28:36,146 [1] INFO Recorder.Logger - 
+2020-07-27 16:28:36,147 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc4MTE1fQ.sWsGFOfV99BEbsVNUvH-qemA8RLP6OyBGEX3WSMiVHwha0reXkPec56Yl_hsC-SJom4CNFD3clhv8lJTY4gNdQ", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:28:36,370 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:28:48,979 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:28:49,406 [1] INFO Recorder.Logger - 
+2020-07-27 16:28:49,407 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc4MTI4fQ.5QoVW4fTW4nsLX9_gWXoJ4g1wnoNLbQtE5ZRE6x26wYsS2s9wwFOUDNTNmXgibrPpLJlus5KSBdogReICQNEoQ", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:28:49,642 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:32:43,388 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:32:43,794 [1] INFO Recorder.Logger - 
+2020-07-27 16:32:43,795 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc4MzYzfQ.FvgsHixQk1NSrwfY2aczSmiJeEJ8qIJtX0qr14JMDdf7tBqMMBNBGq-Xx4QSwZ3y3BwnD6sbWOfWRdN_joJ9KA", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:32:44,013 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:32:46,783 [1] INFO Recorder.Logger - 
+2020-07-27 16:32:46,784 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc4MzY2fQ.mYQuVX7cnMl55AOmNqF6WZGU9LvJqWAv-duqLakTxZcy1G-QWSN8WNocNcAnju-fE9aKEoMjUTtR_Mtfu5BCzw", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:32:46,784 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:33:41,820 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:33:42,273 [1] INFO Recorder.Logger - 
+2020-07-27 16:33:42,274 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc4NDIxfQ.UJkdWs8v3dE6d5PhdElIh3xeVOXqcY1PwtgpB9qYrhN8XEnD4OGvGploSyBsaf5BaxjKQ-s4RmUhZ9dyxz1O0A", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:33:42,537 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:37:00,032 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:37:00,465 [1] INFO Recorder.Logger - 
+2020-07-27 16:37:00,466 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc4NjE5fQ.Fq1qyrxfTKhXH1ffdJqF4bC4sVrZv3uxo4IPDhj2OiYGR8q4zMbb4cLyIePgEG4Y7z5Dzw8-NKzxKM-XHYMGWw", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:37:00,720 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:37:30,992 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:37:31,548 [1] INFO Recorder.Logger - 
+2020-07-27 16:37:31,548 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc4NjUwfQ.HC0mVWd0KSAR7Ygpk2Xz5KkILgVCp7O9R_BL94uTsREVuFB9SsvAfM9Qa1PPBXDsSCYwH4387xN8e6Kx5cRy_A", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:37:31,799 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:38:02,754 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:38:03,354 [1] INFO Recorder.Logger - 
+2020-07-27 16:38:03,354 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc4NjgyfQ.1ifjK8y40NcqUJW-_bdUx4yZkCqf5b2uNMFPkL2JuG5e12zUyO1TaKWlcEtee4Mat75ntyRpMupbMfp2bYw-Bw", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:38:03,562 [1] INFO Recorder.Logger - Login done
+2020-07-27 16:41:28,263 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-27 16:41:28,691 [1] INFO Recorder.Logger - 
+2020-07-27 16:41:28,691 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3Mzc4ODg4fQ.FoEtT6Uj6Hapm10gxSPTN67mv6fiMUvtz2chapCFUl-eLW1cnbmL-dPacMFHrBKQMUexdplc-a4-gKJ9yBh83w", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-27 16:41:28,936 [1] INFO Recorder.Logger - Login done
+2020-07-28 08:55:35,138 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-28 08:55:36,015 [1] INFO Recorder.Logger - 
+2020-07-28 08:55:36,016 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3NDM3MzM1fQ._nVh59YjP-Eo1UzwHVuyGCmBVheqethYZGaEwwKs_E2zSvFFN5Z9ifAVjp-dGgrn_CvM-88m1h52UYSx1HTMsA", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-28 08:55:36,483 [1] INFO Recorder.Logger - Login done
+2020-07-28 08:55:47,684 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-28 08:55:48,277 [1] ERROR Recorder.Logger - System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Recorder.Request.RequestLogin(String username, String password) in D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\Controller\Request.cs:line 244
+2020-07-28 08:55:48,277 [1] ERROR Recorder.Logger - Cannot login to system
+2020-07-28 08:56:02,197 [1] ERROR Recorder.Logger - System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Recorder.Request.RequestLogin(String username, String password) in D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\Controller\Request.cs:line 244
+2020-07-28 08:56:02,197 [1] ERROR Recorder.Logger - Cannot login to system
+2020-07-28 08:56:09,203 [1] INFO Recorder.Logger - 
+2020-07-28 08:56:09,204 [1] INFO Recorder.Logger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjc2huIiwiZXhwIjoxNjI3NDM3MzY4fQ.Owaal1jJ0e5JF_CUAtoo6gxxR9xarcqvAQ_W9LFZOENtI9HwJa9r6SCsC2byTrSLQjlO1nAZzJItYvyOkPjb_g", "userName":"cshn","roleType":"0","firstName":"334545","lastName":"test 535","id":"230","idTypeSession":"null"}
+2020-07-28 08:56:09,424 [1] INFO Recorder.Logger - Login done
+2020-07-28 08:56:37,896 [1] INFO Recorder.Logger - wss://bocbang.ap.ngrok.io
+2020-07-28 08:56:38,409 [1] ERROR Recorder.Logger - System.Net.WebException: The remote server returned an error: (401) Unauthorized.
+   at System.Net.HttpWebRequest.GetResponse()
+   at Recorder.Request.RequestLogin(String username, String password) in D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\Controller\Request.cs:line 244
+2020-07-28 08:56:38,409 [1] ERROR Recorder.Logger - Cannot login to system

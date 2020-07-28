@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recorder", "Recorder\Recorder.csproj", "{DEC6223B-A4BA-458F-A834-E90B9DE3BF9D}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{3CA40031-E782-4DF8-8D63-4613F6751794}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DEC6223B-A4BA-458F-A834-E90B9DE3BF9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC6223B-A4BA-458F-A834-E90B9DE3BF9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC6223B-A4BA-458F-A834-E90B9DE3BF9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC6223B-A4BA-458F-A834-E90B9DE3BF9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA40031-E782-4DF8-8D63-4613F6751794}.Debug|Any CPU.ActiveCfg = Debug
+		{3CA40031-E782-4DF8-8D63-4613F6751794}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB6F20A7-3606-4496-A001-0CFA24D18B68}
+	EndGlobalSection
+EndGlobal
