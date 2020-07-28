@@ -28,20 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingForm));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.TB_WebsocketUrl = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ConfigForm_BT_FolderBrower = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.ConfigForm_TB_DataPath = new System.Windows.Forms.TextBox();
             this.TB_ApiUrl = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.BT_Cancel = new System.Windows.Forms.Button();
             this.BT_Save = new System.Windows.Forms.Button();
             this.CB_DefaultMic = new System.Windows.Forms.ComboBox();
             this.TB_DefaultAudioLength = new System.Windows.Forms.TextBox();
-            this.ConfigForm_TB_DataPath = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.ConfigForm_BT_FolderBrower = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -101,6 +102,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cài đặt";
             // 
+            // ConfigForm_BT_FolderBrower
+            // 
+            this.ConfigForm_BT_FolderBrower.Location = new System.Drawing.Point(586, 193);
+            this.ConfigForm_BT_FolderBrower.Name = "ConfigForm_BT_FolderBrower";
+            this.ConfigForm_BT_FolderBrower.Size = new System.Drawing.Size(38, 23);
+            this.ConfigForm_BT_FolderBrower.TabIndex = 8;
+            this.ConfigForm_BT_FolderBrower.Text = "...";
+            this.ConfigForm_BT_FolderBrower.UseVisualStyleBackColor = true;
+            this.ConfigForm_BT_FolderBrower.Click += new System.EventHandler(this.ConfigForm_BT_FolderBrower_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 193);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(126, 17);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Thư mục lưu Audio";
+            // 
+            // ConfigForm_TB_DataPath
+            // 
+            this.ConfigForm_TB_DataPath.Location = new System.Drawing.Point(163, 193);
+            this.ConfigForm_TB_DataPath.Name = "ConfigForm_TB_DataPath";
+            this.ConfigForm_TB_DataPath.Size = new System.Drawing.Size(417, 22);
+            this.ConfigForm_TB_DataPath.TabIndex = 7;
+            // 
             // TB_ApiUrl
             // 
             this.TB_ApiUrl.Location = new System.Drawing.Point(163, 70);
@@ -154,38 +181,13 @@
             this.TB_DefaultAudioLength.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             this.TB_DefaultAudioLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TB_DefaultAudioLength_KeyPress);
             // 
-            // ConfigForm_TB_DataPath
-            // 
-            this.ConfigForm_TB_DataPath.Location = new System.Drawing.Point(163, 193);
-            this.ConfigForm_TB_DataPath.Name = "ConfigForm_TB_DataPath";
-            this.ConfigForm_TB_DataPath.Size = new System.Drawing.Size(417, 22);
-            this.ConfigForm_TB_DataPath.TabIndex = 7;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 193);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 17);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Thư mục lưu Audio";
-            // 
-            // ConfigForm_BT_FolderBrower
-            // 
-            this.ConfigForm_BT_FolderBrower.Location = new System.Drawing.Point(586, 193);
-            this.ConfigForm_BT_FolderBrower.Name = "ConfigForm_BT_FolderBrower";
-            this.ConfigForm_BT_FolderBrower.Size = new System.Drawing.Size(38, 23);
-            this.ConfigForm_BT_FolderBrower.TabIndex = 8;
-            this.ConfigForm_BT_FolderBrower.Text = "...";
-            this.ConfigForm_BT_FolderBrower.UseVisualStyleBackColor = true;
-            this.ConfigForm_BT_FolderBrower.Click += new System.EventHandler(this.ConfigForm_BT_FolderBrower_Click);
-            // 
             // SettingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 308);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SettingForm";
             this.Text = "SettingForm";
             this.groupBox1.ResumeLayout(false);

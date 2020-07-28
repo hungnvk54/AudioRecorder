@@ -1,0 +1,10 @@
+2020-07-28 18:50:10,080 [1] INFO Recorder.Logger - save directory: D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug
+2020-07-28 18:56:49,916 [1] INFO Recorder.Logger - save directory: D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\bin\Debug
+2020-07-28 18:57:11,218 [1] ERROR Recorder.Logger - System.Net.WebException: Unable to connect to the remote server ---> System.Net.Sockets.SocketException: A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 172.17.0.1:80
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.ServicePoint.ConnectSocketInternal(Boolean connectFailure, Socket s4, Socket s6, Socket& socket, IPAddress& address, ConnectSocketState state, IAsyncResult asyncResult, Exception& exception)
+   --- End of inner exception stack trace ---
+   at System.Net.HttpWebRequest.GetRequestStream(TransportContext& context)
+   at System.Net.HttpWebRequest.GetRequestStream()
+   at Recorder.Request.RequestLogin(String username, String password) in D:\DATA\02-Resource\06-Rikkei\Recording\winform\Recorder\Recorder\Controller\Request.cs:line 226
+2020-07-28 18:57:11,219 [1] ERROR Recorder.Logger - Cannot login to system
