@@ -1,9 +1,10 @@
-﻿using System;
+﻿using AudioRecorderApps.AppForm;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace Recorder
+namespace AudioRecorderApps
 {
     static class Program
     {
@@ -15,13 +16,13 @@ namespace Recorder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DialogResult result;
+            DialogResult result = DialogResult.OK; 
             using (var login_form = new LoginForm())
-                result = login_form.ShowDialog();
+               result = login_form.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                Application.Run(new Recorder_Tab_OfflineRecording());
+                Application.Run(new AudioRecordingForms());
             }
         }
     }

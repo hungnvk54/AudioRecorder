@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using NAudio;
-namespace Recorder{
+namespace AudioRecorderApps{
 	public class Recorder : IDisposable
 	{
 		public enum SampleRate

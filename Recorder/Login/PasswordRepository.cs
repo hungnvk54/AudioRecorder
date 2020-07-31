@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CredentialManagement;
 
-namespace Recorder.Login
+namespace AudioRecorderApps.Login
 {
     public class PasswordRepository
     {

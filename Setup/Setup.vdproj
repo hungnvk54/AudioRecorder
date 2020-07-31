@@ -21,8 +21,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_2FDF0992353FF3F17D669FD93FB98F29"
+        "OwnerKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_36E6771DB7D948486AA69631AEF9693E"
         "OwnerKey" = "8:_D0FC52B83EB84042ACBFF128C4E4C225"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_36E6771DB7D948486AA69631AEF9693E"
+        "OwnerKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -33,8 +45,20 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_415B68ED5AB3F8601A70FCC81497AB53"
+        "OwnerKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_68AC413235324C05670D6C58F8630BBC"
         "OwnerKey" = "8:_D0FC52B83EB84042ACBFF128C4E4C225"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_68AC413235324C05670D6C58F8630BBC"
+        "OwnerKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -45,7 +69,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_A3AB8AF76522401B861198C92AB98A37"
+        "MsmKey" = "8:_6AF3C69AA946B798199EAA10C1974B3A"
+        "OwnerKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_75E16F5F66E040E8B2B64F274293788F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9AA768577B0E4BE78C443F63A4C95F11"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -57,8 +93,26 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_B348419D97EFE3E7961068E0BE1B9166"
+        "OwnerKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C24F4F296D81B0CDC09320D9027C4587"
         "OwnerKey" = "8:_D0FC52B83EB84042ACBFF128C4E4C225"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C24F4F296D81B0CDC09320D9027C4587"
+        "OwnerKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,20 +123,32 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C7159D137EB0C0E3733C3C8D9815037F"
+        "OwnerKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_D0FC52B83EB84042ACBFF128C4E4C225"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_36E6771DB7D948486AA69631AEF9693E"
+        "MsmKey" = "8:_DF3C1F97C1BF4521A1C5C8179D0275CA"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_D0FC52B83EB84042ACBFF128C4E4C225"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BA93967374F54F1FBF0D0858B6DBE368"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -125,6 +191,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_C7159D137EB0C0E3733C3C8D9815037F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_36E6771DB7D948486AA69631AEF9693E"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -184,6 +256,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
     }
@@ -369,10 +449,30 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A3AB8AF76522401B861198C92AB98A37"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_75E16F5F66E040E8B2B64F274293788F"
             {
             "SourcePath" = "8:C:\\Users\\hungnv\\Downloads\\microphone.ico"
             "TargetName" = "8:microphone.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_9FA1887469664385B9476F745FB9BF70"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9AA768577B0E4BE78C443F63A4C95F11"
+            {
+            "SourcePath" = "8:..\\Recorder\\bin\\Debug\\libmp3lame.64.dll"
+            "TargetName" = "8:libmp3lame.64.dll"
             "Tag" = "8:"
             "Folder" = "8:_9FA1887469664385B9476F745FB9BF70"
             "Condition" = "8:"
@@ -482,6 +582,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DF3C1F97C1BF4521A1C5C8179D0275CA"
+            {
+            "SourcePath" = "8:..\\Recorder\\bin\\Debug\\libmp3lame.32.dll"
+            "TargetName" = "8:libmp3lame.32.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_9FA1887469664385B9476F745FB9BF70"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -539,7 +659,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AudioRecorder"
         "ProductCode" = "8:{4A0FE737-5A56-4B25-A2BD-CC5A2F6C5158}"
-        "PackageCode" = "8:{1981F368-1085-4173-ACCE-78BD70C82CA7}"
+        "PackageCode" = "8:{DBB8E323-D9C7-48CF-86F0-413BF85CD5AC}"
         "UpgradeCode" = "8:{2566A0C7-BB6A-47A7-B8CA-D722DA8FDE62}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -670,7 +790,7 @@
             "Target" = "8:_D0FC52B83EB84042ACBFF128C4E4C225"
             "Folder" = "8:_52374802D1254A06A598248FE8E77105"
             "WorkingFolder" = "8:_9FA1887469664385B9476F745FB9BF70"
-            "Icon" = "8:_A3AB8AF76522401B861198C92AB98A37"
+            "Icon" = "8:_75E16F5F66E040E8B2B64F274293788F"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_807FB7E4C19D4E8A8539DDEEEFBFC8C9"
@@ -684,7 +804,7 @@
             "Target" = "8:_D0FC52B83EB84042ACBFF128C4E4C225"
             "Folder" = "8:_37C9C2B55E2246C4A3707642BAC99984"
             "WorkingFolder" = "8:_9FA1887469664385B9476F745FB9BF70"
-            "Icon" = "8:"
+            "Icon" = "8:_75E16F5F66E040E8B2B64F274293788F"
             "Feature" = "8:"
             }
         }
@@ -1086,6 +1206,34 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_BA93967374F54F1FBF0D0858B6DBE368"
+            {
+            "SourcePath" = "8:..\\Recorder\\obj\\Debug\\Recorder.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_9FA1887469664385B9476F745FB9BF70"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{DEC6223B-A4BA-458F-A834-E90B9DE3BF9D}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_D0FC52B83EB84042ACBFF128C4E4C225"
             {
             "SourcePath" = "8:..\\Recorder\\obj\\Debug\\Recorder.exe"

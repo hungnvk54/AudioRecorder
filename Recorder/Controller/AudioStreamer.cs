@@ -8,7 +8,7 @@ using System.Diagnostics;
 using System.Threading;
 
 
-namespace Recorder
+namespace AudioRecorderApps
 {
     class AudioStreamer : IDisposable
     {

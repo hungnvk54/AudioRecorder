@@ -7,7 +7,7 @@ using System.Windows.Forms;
 using NAudio;
 using NAudio.Lame;
 
-namespace Recorder.Controller
+namespace AudioRecorderApps.Controller
 {
     class AudioWriter : IDisposable
     {
@@ -40,7 +40,7 @@ namespace Recorder.Controller
 
         public bool WriteStream(byte [] data, int length)
         {
-            if (type == Type.Wav)
+            if (type == Type.Wav && mWavFileWriter != null)
             {
                 mWavFileWriter.Write(data, 0, length);
                 mWavFileWriter.Flush();
@@ -52,14 +52,14 @@ namespace Recorder.Controller
         public bool WavToMP3(string waveFileName, string mp3FileName, int bitRate = 128)
         {
             bool result = true;
-            //try
+            try
             {
                 using (var reader = new NAudio.Wave.WaveFileReader(waveFileName))
                 using (var writer = new LameMP3FileWriter(mp3FileName, reader.WaveFormat, bitRate))
                     reader.CopyTo(writer);
 
             }
-            //catch (Exception)
+            catch (Exception)
             {
                 result = false;
             }

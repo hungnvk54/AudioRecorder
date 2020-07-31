@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Recorder.Properties {
+namespace AudioRecorderApps.Properties {
     using System;
     
     

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 
-namespace Recorder
+namespace AudioRecorderApps
 {
     class AudioStreamTextArgs : EventArgs
     {

@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Recorder" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ws" Type="System.String" Scope="User">
+      <Value Profile="(Default)">wss://127.0.0.1</Value>
+    </Setting>
+    <Setting Name="mic" Type="System.String" Scope="User">
+      <Value Profile="(Default)">-1</Value>
+    </Setting>
+    <Setting Name="audiolength" Type="System.String" Scope="User">
+      <Value Profile="(Default)">3</Value>
+    </Setting>
+    <Setting Name="api" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://127.0.0.1/bocbang</Value>
+    </Setting>
+    <Setting Name="datadir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

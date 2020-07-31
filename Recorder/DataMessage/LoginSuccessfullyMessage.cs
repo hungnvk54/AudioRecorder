@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Recorder.DataMessage
+namespace AudioRecorderApps.DataMessage
 {
-    class LoginSuccessfullyMessage
+    public class LoginSuccessfullyMessage
     {
         public string Authorization
         {
