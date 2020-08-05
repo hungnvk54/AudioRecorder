@@ -784,7 +784,7 @@ namespace AudioRecorderApps
             // Assign title bar
             Version v = new Version(Application.
             ProductVersion);
-            this.Text = String.Format("Audio Recorder And Translator {0}.{1}", v.Major, v.Minor);
+            this.Text = String.Format("Audio Recorder And Translator {0}.{1} @Province", v.Major, v.Minor);
 
             /*foreach (var file in Directory.GetFiles(@"C:\Users\hungnv\Desktop\Test\1"))
             {
