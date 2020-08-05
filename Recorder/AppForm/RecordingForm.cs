@@ -21,7 +21,8 @@ namespace AudioRecorderApps
         {
             IDLE,
             STARTING,
-            RECORDED
+            RECORDED, 
+            STOPPING
         }
 
         private const int onlineRecordingTabIndex = 0;
@@ -106,6 +107,8 @@ namespace AudioRecorderApps
                     {
                         Cursor.Current = Cursors.WaitCursor;
                         Logger.GetInstance().Logging.Info("Cancelling the Thread");
+                        mIsCapture = RecordingState.STOPPING;
+                        this.BT_Start.Text = "Stoping";
                         mBackgroundWorker.CancelAsync();
                     }
                 }
@@ -114,7 +117,7 @@ namespace AudioRecorderApps
                     MessageBox.Show("Vui lòng chờ, hệ thống đang khởi động", "Thông tin phiên",
                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                else if (mIsCapture == RecordingState.IDLE)
                 {
                     // Set cursor as default arrow
                     Cursor.Current = Cursors.WaitCursor;
@@ -125,6 +128,10 @@ namespace AudioRecorderApps
                         mIsCapture = RecordingState.STARTING;
                         this.AudioRecording_Tab.Selectable = false;
                     }
+                } else if( mIsCapture == RecordingState.STOPPING)
+                {
+                    MessageBox.Show("Hệ thống đang tắt\nVui lòng chờ...", "Thông tin phiên",
+                           MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else if (this.AudioRecording_Tab.SelectedIndex == offlineRecordingTabIndex)
@@ -138,6 +145,8 @@ namespace AudioRecorderApps
                     {
                         Cursor.Current = Cursors.WaitCursor;
                         Logger.GetInstance().Logging.Info("Cancelling the Thread");
+                        mIsCapture = RecordingState.STOPPING;
+                        this.BT_Start.Text = "Stoping";
                         mBackgroundOfflineWorker.CancelAsync();
                     }
                 }
@@ -146,7 +155,7 @@ namespace AudioRecorderApps
                     MessageBox.Show("Vui lòng chờ, hệ thống đang khởi động", "Thông tin phiên",
                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else
+                else if( mIsCapture == RecordingState.STOPPING)
                 {
                     // Set cursor as default arrow
                     Cursor.Current = Cursors.WaitCursor;
@@ -159,6 +168,10 @@ namespace AudioRecorderApps
                         mIsCapture = RecordingState.STARTING;
                         this.AudioRecording_Tab.Selectable = false;
                     }
+                } else if( mIsCapture == RecordingState.STOPPING)
+                {
+                    MessageBox.Show("Hệ thống đang tắt\nVui lòng chờ...", "Thông tin phiên",
+                           MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
 
@@ -868,7 +881,7 @@ namespace AudioRecorderApps
 
         private bool CloseOfflineSession()
         {
-            bool isSuccessfull = Request.RequestChangeSessionStatus(tb_SessionId.Text, 0);
+            bool isSuccessfull = true; // Request.RequestChangeSessionStatus(tb_SessionId.Text, 0);
             return isSuccessfull;
         }
 
