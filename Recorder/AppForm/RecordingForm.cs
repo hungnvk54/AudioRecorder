@@ -284,12 +284,14 @@ namespace AudioRecorderApps
         {
             Logger.GetInstance().Logging.Error(String.Format("Cannot init the session {0}", e.Error));
             ///Close all connection
+            StopRecording();
             if (e.Cancelled)
             {
                 ConvertToMp3();
             }
-            StopRecording();
+            DestroyAudioWriter();
             InitRecordingIdle();
+            
         }
 
 
@@ -298,7 +300,7 @@ namespace AudioRecorderApps
             DestroyAudioRecorder();
             DestroyAudioStreamer();
             CloseSessionInfo();
-            DestroyAudioWriter();
+            //DestroyAudioWriter(); Donot dispose here.
         }
 
         private void StartRecording(object sender, DoWorkEventArgs e)
@@ -784,7 +786,7 @@ namespace AudioRecorderApps
             // Assign title bar
             Version v = new Version(Application.
             ProductVersion);
-            this.Text = String.Format("Audio Recorder And Translator {0}.{1} @Province", v.Major, v.Minor);
+            this.Text = String.Format("Audio Recorder And Translator {0}.{1} @Quoc Hoi", v.Major, v.Minor);
 
             /*foreach (var file in Directory.GetFiles(@"C:\Users\hungnv\Desktop\Test\1"))
             {
@@ -1167,7 +1169,7 @@ namespace AudioRecorderApps
         {
             if (name.IsNullOrEmpty())
             {
-                return Path.Combine(GetAudioPath(), mAudioName + ".wav");
+                return Path.Combine(GetAudioPath(), mAudioName, mAudioName + ".wav");
             } else
             {
                 return Path.Combine(GetAudioPath(), name + ".wav");
@@ -1178,7 +1180,7 @@ namespace AudioRecorderApps
         {
             if (name.IsNullOrEmpty())
             {
-                return Path.Combine(GetAudioPath(), mAudioName + ".mp3");
+                return Path.Combine(GetAudioPath(), mAudioName, mAudioName + ".mp3");
             }
             else
             {
