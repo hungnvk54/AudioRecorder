@@ -39,6 +39,11 @@ namespace AudioRecorderApps
                 request.Headers.Add("Authorization", token);
             }
 
+            if (request is HttpWebRequest httpRequest)
+            {
+                httpRequest.UserAgent = "MyCustomUserAgent/1.0";
+            }
+
             if (type == Utils.ConnectionType.SSLProtocol)
             {
                 ServicePointManager.CertificatePolicy = new MyPolicy();
@@ -54,7 +59,7 @@ namespace AudioRecorderApps
                 bool requestResult = false;
                 // Create a request using a URL that can receive a post.
                 string uri = string.Format("{0}/sessions/updateStatusByIdSession", AppsSettings.GetInstance().ApiUrl);
-                Logger.GetInstance().Logging.Info(String.Format("Send change system status {0} to {1}", isLive, uri));
+                AppLogger.GetInstance().Logging.Info(String.Format("Send change system status {0} to {1}", isLive, uri));
                 WebRequest request = GetWebRequester(uri, AppsSettings.GetInstance().AuthorizeToken);
                 // Set the Method property of the request to POST.
                 request.Method = "POST";
@@ -88,7 +93,7 @@ namespace AudioRecorderApps
                     // Read the content.
                     string responseFromServer = reader.ReadToEnd();
                     // Display the content.
-                    Logger.GetInstance().Logging.Info(responseFromServer);
+                    AppLogger.GetInstance().Logging.Info(responseFromServer);
                     try
                     {
                         BackEndResponseMessage RspMsg = JsonConvert.DeserializeObject<BackEndResponseMessage>(responseFromServer);
@@ -103,7 +108,7 @@ namespace AudioRecorderApps
                     }
                     catch (Exception e)
                     {
-                        Logger.GetInstance().Logging.Error(e);
+                        AppLogger.GetInstance().Logging.Error(e);
                         requestResult = false;
                     }
                 }
@@ -114,7 +119,81 @@ namespace AudioRecorderApps
             }
             catch (Exception e)
             {
-                Logger.GetInstance().Logging.Error(String.Format("{0}", e));
+                AppLogger.GetInstance().Logging.Error(String.Format("{0}", e));
+                return false;
+            }
+
+        }
+
+
+        public static bool RequestChangeOfflineSessionStatus(string sessionId, int isLive)
+        {
+            try
+            {
+                bool requestResult = false;
+                // Create a request using a URL that can receive a post.
+                string uri = string.Format("{0}/sessions/updateOfflineStatusByIdSession", AppsSettings.GetInstance().ApiUrl);
+                AppLogger.GetInstance().Logging.Info(String.Format("Send change system status {0} to {1}", isLive, uri));
+                WebRequest request = GetWebRequester(uri, AppsSettings.GetInstance().AuthorizeToken);
+                // Set the Method property of the request to POST.
+                request.Method = "POST";
+                request.ContentType = "application/json; charset=UTF-8";
+
+                // Create POST data and convert it to a byte array.
+                string postData = String.Format("{{\"idSession\": {0}, \"status\": 0, \"isLive\": {1} }}", sessionId, isLive);
+                byte[] byteArray = Encoding.UTF8.GetBytes(postData);
+
+                // Set the ContentLength property of the WebRequest.
+                request.ContentLength = byteArray.Length;
+
+                // Get the request stream.
+                Stream dataStream = request.GetRequestStream();
+                // Write the data to the request stream.
+                dataStream.Write(byteArray, 0, byteArray.Length);
+                // Close the Stream object.
+                dataStream.Close();
+
+                // Get the response.
+                WebResponse response = request.GetResponse();
+                // Display the status.
+                Console.WriteLine(((HttpWebResponse)response).StatusDescription);
+
+                // Get the stream containing content returned by the server.
+                // The using block ensures the stream is automatically closed.
+                using (dataStream = response.GetResponseStream())
+                {
+                    // Open the stream using a StreamReader for easy access.
+                    StreamReader reader = new StreamReader(dataStream);
+                    // Read the content.
+                    string responseFromServer = reader.ReadToEnd();
+                    // Display the content.
+                    AppLogger.GetInstance().Logging.Info(responseFromServer);
+                    try
+                    {
+                        BackEndResponseMessage RspMsg = JsonConvert.DeserializeObject<BackEndResponseMessage>(responseFromServer);
+                        if (RspMsg.status.Equals("1"))
+                        {
+                            requestResult = true;
+                        }
+                        else
+                        {
+                            requestResult = false;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        AppLogger.GetInstance().Logging.Error(e);
+                        requestResult = false;
+                    }
+                }
+
+                // Close the response.
+                response.Close();
+                return requestResult;
+            }
+            catch (Exception e)
+            {
+                AppLogger.GetInstance().Logging.Error(String.Format("{0}", e));
                 return false;
             }
 
@@ -166,7 +245,7 @@ namespace AudioRecorderApps
                 // Get the response.
                 WebResponse response = request.GetResponse();
                 // Display the status.
-                Logger.GetInstance().Logging.Info(((HttpWebResponse)response).StatusDescription);
+                AppLogger.GetInstance().Logging.Info(((HttpWebResponse)response).StatusDescription);
 
                 // Get the stream containing content returned by the server.
                 // The using block ensures the stream is automatically closed.
@@ -177,7 +256,7 @@ namespace AudioRecorderApps
                     // Read the content.
                     string responseFromServer = reader.ReadToEnd();
                     // Display the content.
-                    Logger.GetInstance().Logging.Info(responseFromServer);
+                    AppLogger.GetInstance().Logging.Info(responseFromServer);
                     try { 
                         BackEndResponseMessage RspMsg = JsonConvert.DeserializeObject<BackEndResponseMessage>(responseFromServer);
                         if (RspMsg.status.Equals("1"))
@@ -191,7 +270,7 @@ namespace AudioRecorderApps
                     }
                     catch (Exception e)
                     {
-                        Logger.GetInstance().Logging.Error(e);
+                        AppLogger.GetInstance().Logging.Error(e);
                         requestResult = false;
                     }
                 }
@@ -202,7 +281,7 @@ namespace AudioRecorderApps
                 return requestResult;
             } catch(Exception e)
             {
-                Logger.GetInstance().Logging.Error(String.Format("{0}", e));
+                AppLogger.GetInstance().Logging.Error(String.Format("{0}", e));
                 return false;
             }
             
@@ -212,7 +291,7 @@ namespace AudioRecorderApps
         {
             try
             {
-                // Create a request using a URL that can receive a post.
+                // Create a request using a URL that can receive a post
                 string uri = string.Format("{0}/login", AppsSettings.GetInstance().ApiUrl);
                 WebRequest request = GetWebRequester(uri, AppsSettings.GetInstance().AuthorizeToken);
                 // Set the Method property of the request to POST.
@@ -241,7 +320,7 @@ namespace AudioRecorderApps
                 // Get the response.
                 WebResponse response = request.GetResponse();
                 // Display the status.
-                Logger.GetInstance().Logging.Info(((HttpWebResponse)response).StatusDescription);
+                AppLogger.GetInstance().Logging.Info(((HttpWebResponse)response).StatusDescription);
 
                 // Get the stream containing content returned by the server.
                 // The using block ensures the stream is automatically closed.
@@ -252,7 +331,7 @@ namespace AudioRecorderApps
                     // Read the content.
                     string responseFromServer = reader.ReadToEnd();
                     // Display the content.
-                    Logger.GetInstance().Logging.Info(responseFromServer);
+                    AppLogger.GetInstance().Logging.Info(responseFromServer);
                     try
                     {
                         LoginSuccessfullyMessage RspMsg = JsonConvert.DeserializeObject<LoginSuccessfullyMessage>(responseFromServer);
@@ -260,7 +339,7 @@ namespace AudioRecorderApps
                     }
                     catch (Exception e)
                     {
-                        Logger.GetInstance().Logging.Error(e);
+                        AppLogger.GetInstance().Logging.Error(e);
                     }
                 }
 
@@ -271,7 +350,7 @@ namespace AudioRecorderApps
             }
             catch (Exception e)
             {
-                Logger.GetInstance().Logging.Error(String.Format("{0}", e));
+                AppLogger.GetInstance().Logging.Error(String.Format("{0}", e));
                 return null;
             }
 
@@ -327,7 +406,7 @@ namespace AudioRecorderApps
                 // Get the response.
                 WebResponse response = request.GetResponse();
                 // Display the status.
-                Logger.GetInstance().Logging.Info(((HttpWebResponse)response).StatusDescription);
+                AppLogger.GetInstance().Logging.Info(((HttpWebResponse)response).StatusDescription);
 
                 // Get the stream containing content returned by the server.
                 // The using block ensures the stream is automatically closed.
@@ -338,7 +417,7 @@ namespace AudioRecorderApps
                     // Read the content.
                     string responseFromServer = reader.ReadToEnd();
                     // Display the content.
-                    Logger.GetInstance().Logging.Info(responseFromServer);
+                    AppLogger.GetInstance().Logging.Info(responseFromServer);
                     try
                     {
                         BackEndResponseMessage RspMsg = JsonConvert.DeserializeObject<BackEndResponseMessage>(responseFromServer);
@@ -353,7 +432,7 @@ namespace AudioRecorderApps
                     }
                     catch (Exception e)
                     {
-                        Logger.GetInstance().Logging.Error(e);
+                        AppLogger.GetInstance().Logging.Error(e);
                         requestResult = false;
                     }
                 }
@@ -365,7 +444,7 @@ namespace AudioRecorderApps
             }
             catch (Exception e)
             {
-                Logger.GetInstance().Logging.Error(String.Format("{0}", e));
+                AppLogger.GetInstance().Logging.Error(String.Format("{0}", e));
                 return false;
             }
 
@@ -409,7 +488,7 @@ namespace AudioRecorderApps
                 // Get the response.
                 WebResponse response = request.GetResponse();
                 // Display the status.
-                Logger.GetInstance().Logging.Info(((HttpWebResponse)response).StatusDescription);
+                AppLogger.GetInstance().Logging.Info(((HttpWebResponse)response).StatusDescription);
 
                 // Get the stream containing content returned by the server.
                 // The using block ensures the stream is automatically closed.
@@ -420,7 +499,7 @@ namespace AudioRecorderApps
                     // Read the content.
                     string responseFromServer = reader.ReadToEnd();
                     // Display the content.
-                    Logger.GetInstance().Logging.Info(responseFromServer);
+                    AppLogger.GetInstance().Logging.Info(responseFromServer);
                     try
                     {
                         BackEndResponseMessage RspMsg = JsonConvert.DeserializeObject<BackEndResponseMessage>(responseFromServer);
@@ -435,7 +514,7 @@ namespace AudioRecorderApps
                     }
                     catch (Exception e)
                     {
-                        Logger.GetInstance().Logging.Error(e);
+                        AppLogger.GetInstance().Logging.Error(e);
                         requestResult = false;
                     }
                 }
@@ -447,8 +526,100 @@ namespace AudioRecorderApps
             }
             catch (Exception e)
             {
-                Logger.GetInstance().Logging.Error(String.Format("{0}", e));
+                AppLogger.GetInstance().Logging.Error(String.Format("{0}", e));
                 return false;
+            }
+
+        }
+
+        public static AudioTestServerReponseMessage UploadFileToTestServer(string fileName)
+        {
+            try
+            {
+                string FormDataTemplate = "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"\r\n\r\n{2}\r\n";
+                // Create a request using a URL that can receive a post.
+
+                string apiUrl = AppsSettings.GetInstance().ApiUrl.TrimEnd('/');
+                apiUrl = apiUrl.Substring(0, apiUrl.LastIndexOf('/'));
+                string uri = string.Format("{0}/api/upload/audio", apiUrl);
+
+                AppLogger.GetInstance().Logging.Info(String.Format("Send file {0} to {1}", fileName, uri));
+                WebRequest request = GetWebRequester(uri, AppsSettings.GetInstance().AuthorizeToken);
+                // Set the Method property of the request to POST.
+                string boundary = CreateFormDataBoundary();
+                request.Method = "POST";
+                request.ContentType = "multipart/form-data; boundary=" + boundary;
+
+                // Get the request stream.
+                Stream dataStream = request.GetRequestStream();
+                // Write the data to the request stream.
+
+                string uuid = Guid.NewGuid().ToString("N").Substring(0, 4);
+                string item = String.Format(FormDataTemplate, boundary, "id_session", uuid);
+                byte[] itemBytes = Encoding.UTF8.GetBytes(item);
+                dataStream.Write(itemBytes, 0, itemBytes.Length);
+
+
+                string HeaderTemplate = "--{0}\r\nContent-Disposition: form-data; name=\"{1}\"; filename=\"{2}\"\r\nContent-Type: {3}\r\n\r\n";
+                string header = String.Format(HeaderTemplate, boundary, "audio", Path.GetFileName(fileName), "audio/wav");
+                byte[] headerbytes = Encoding.UTF8.GetBytes(header);
+                dataStream.Write(headerbytes, 0, headerbytes.Length);
+
+                using (FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read))
+                {
+                    byte[] buffer = new byte[1024];
+                    int bytesRead = 0;
+                    while ((bytesRead = fileStream.Read(buffer, 0, buffer.Length)) != 0)
+                    {
+                        dataStream.Write(buffer, 0, bytesRead);
+                    }
+                    fileStream.Close();
+                }
+
+                byte[] newlineBytes = Encoding.UTF8.GetBytes("\r\n");
+                dataStream.Write(newlineBytes, 0, newlineBytes.Length);
+
+                byte[] endBytes = Encoding.UTF8.GetBytes("--" + boundary + "--");
+                dataStream.Write(endBytes, 0, endBytes.Length);
+                // Close the Stream object.
+                dataStream.Close();
+
+                // Get the response.
+                WebResponse response = request.GetResponse();
+                // Display the status.
+                AppLogger.GetInstance().Logging.Info(((HttpWebResponse)response).StatusDescription);
+
+                // Get the stream containing content returned by the server.
+                // The using block ensures the stream is automatically closed.
+                using (dataStream = response.GetResponseStream())
+                {
+                    // Open the stream using a StreamReader for easy access.
+                    StreamReader reader = new StreamReader(dataStream);
+                    // Read the content.
+                    string responseFromServer = reader.ReadToEnd();
+                    // Display the content.
+                    AppLogger.GetInstance().Logging.Info(responseFromServer);
+                    try
+                    {
+                        AudioTestServerReponseMessage RspMsg = JsonConvert.DeserializeObject<AudioTestServerReponseMessage>(responseFromServer);
+                        response.Close();
+                        return RspMsg;
+                    }
+                    catch (Exception e)
+                    {
+                        AppLogger.GetInstance().Logging.Error(e);
+                    }
+                }
+
+                // Close the response.
+                response.Close();
+
+                return null;
+            }
+            catch (Exception e)
+            {
+                AppLogger.GetInstance().Logging.Error(String.Format("{0}", e));
+                return null;
             }
 
         }

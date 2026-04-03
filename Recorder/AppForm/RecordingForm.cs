@@ -12,6 +12,9 @@ using WebSocketSharp;
 using System.Text.RegularExpressions;
 using AudioRecorderApps.Data;
 
+using Recorder.AppForm;
+
+
 namespace AudioRecorderApps
 {
     public partial class AudioRecordingForms : Form
@@ -91,6 +94,8 @@ namespace AudioRecorderApps
             mBackgroundOfflineWorker.WorkerReportsProgress = true;
             mBackgroundOfflineWorker.RunWorkerCompleted += worker_RunWorkerOfflineCompleted;
             mBackgroundOfflineWorker.ProgressChanged += WorkerPercentageStateChange;
+
+            AudioRecording_Tab.SelectedIndex = offlineRecordingTabIndex;
     }
 
         private void BT_Start_Click(object sender, EventArgs e)
@@ -106,7 +111,7 @@ namespace AudioRecorderApps
                     if (mBackgroundWorker.IsBusy)
                     {
                         Cursor.Current = Cursors.WaitCursor;
-                        Logger.GetInstance().Logging.Info("Cancelling the Thread");
+                        AppLogger.GetInstance().Logging.Info("Cancelling the Thread");
                         mIsCapture = RecordingState.STOPPING;
                         this.BT_Start.Text = "Stoping";
                         mBackgroundWorker.CancelAsync();
@@ -137,14 +142,14 @@ namespace AudioRecorderApps
             else if (this.AudioRecording_Tab.SelectedIndex == offlineRecordingTabIndex)
             {
                 //II. Offline Recording
-                Logger.GetInstance().Logging.Info("Offline recording...");
+                AppLogger.GetInstance().Logging.Info("Offline recording...");
                 if (mIsCapture == RecordingState.RECORDED)
                 {
                     //Stop capture here
                     if (mBackgroundOfflineWorker.IsBusy)
                     {
                         Cursor.Current = Cursors.WaitCursor;
-                        Logger.GetInstance().Logging.Info("Cancelling the Thread");
+                        AppLogger.GetInstance().Logging.Info("Cancelling the Thread");
                         mIsCapture = RecordingState.STOPPING;
                         this.BT_Start.Text = "Stoping";
                         mBackgroundOfflineWorker.CancelAsync();
@@ -155,7 +160,7 @@ namespace AudioRecorderApps
                     MessageBox.Show("Vui lòng chờ, hệ thống đang khởi động", "Thông tin phiên",
                            MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-                else if( mIsCapture == RecordingState.STOPPING)
+                else if( mIsCapture == RecordingState.IDLE)
                 {
                     // Set cursor as default arrow
                     Cursor.Current = Cursors.WaitCursor;
@@ -179,7 +184,7 @@ namespace AudioRecorderApps
 
         private void OnDataAvailable(object sender, WaveInEventArgs args)
         {
-            Logger.GetInstance().Logging.Info(String.Format("Number of Recording byte: {0}", args.BytesRecorded));
+            AppLogger.GetInstance().Logging.Info(String.Format("Number of Recording byte: {0}", args.BytesRecorded));
             if (mIsPause == false)
             {
                 decorate_volumeter_bar(args);
@@ -195,15 +200,21 @@ namespace AudioRecorderApps
                     {
                         break;
                     }
-                    Logger.GetInstance().Logging.Info(String.Format("Sending Message In Error Buffer"));
+                    AppLogger.GetInstance().Logging.Info(String.Format("Sending Message In Error Buffer"));
                     mErrorBufferData.Dequeue();
                 }
-                Logger.GetInstance().Logging.Info(String.Format("Number of Item in Error Buffer {0}", mErrorBufferData.Count));
+                AppLogger.GetInstance().Logging.Info(String.Format("Number of Item in Error Buffer {0}", mErrorBufferData.Count));
                 if (!SendAudioData(args))
                 {
-                    byte[] rawData = new byte[args.BytesRecorded];
-                    args.Buffer.CopyTo(rawData, 0);
-                    mErrorBufferData.Enqueue(new WaveInEventArgs(rawData, rawData.Length));
+                    try
+                    {
+                        byte[] rawData = new byte[args.BytesRecorded];
+                        args.Buffer.CopyTo(rawData, 0);
+                        mErrorBufferData.Enqueue(new WaveInEventArgs(rawData, rawData.Length));
+                    } catch
+                    {
+
+                    }
                 }
 
             }
@@ -222,7 +233,7 @@ namespace AudioRecorderApps
         {
             if (e.ProgressPercentage == 0)
             {
-                Logger.GetInstance().Logging.Warn("Không thể khởi tạo thông tin phiên\n" +
+                AppLogger.GetInstance().Logging.Warn("Không thể khởi tạo thông tin phiên\n" +
                     "Tạo phiên mới hoặc xóa thông tin cũ và thử lại");
                 ///Connection errrors. Close all connection
                 MessageBox.Show("Không thể khởi tạo thông tin phiên\n" +
@@ -230,7 +241,7 @@ namespace AudioRecorderApps
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             } else if (e.ProgressPercentage == 1)
             {
-                Logger.GetInstance().Logging.Warn("Không kết nối được Server.\n" +
+                AppLogger.GetInstance().Logging.Warn("Không kết nối được Server.\n" +
                     "Kiểm tra lại cấu hình server dịch");
                 ///Connection errrors. Close all connection
                 MessageBox.Show("Không kết nối được Server.\n" +
@@ -239,7 +250,7 @@ namespace AudioRecorderApps
             }
             if (e.ProgressPercentage == 2)
             {
-                Logger.GetInstance().Logging.Warn("Không khởi tạo được thiết bị ghi âm.\n" +
+                AppLogger.GetInstance().Logging.Warn("Không khởi tạo được thiết bị ghi âm.\n" +
                     "Kiểm tra lại cấu hình thiết bị ghi âm");
                 ///Connection errrors. Close all connection
                 MessageBox.Show("Không thể khởi tạo thông tin phiên\n" +
@@ -264,6 +275,12 @@ namespace AudioRecorderApps
             RT_FullSentence.Text = "";
             mErrorBufferData.Clear();
             CreateTimerCounter();
+
+            TB_AudioLength.Enabled = false;
+            TB_FileName.Enabled = false;
+            cb_ListMicIn.Enabled = false;
+            tb_SessionId.Enabled = false;
+            RecordingForm_CB_SaveAudio.Enabled = false;
             // Set cursor as default arrow
             Cursor.Current = Cursors.Default;
         }
@@ -274,6 +291,13 @@ namespace AudioRecorderApps
             BT_Start.Text = "Start";
             mIsCapture = RecordingState.IDLE;
             BT_Pause.Enabled = false;
+
+            TB_AudioLength.Enabled = true;
+            TB_FileName.Enabled = true;
+            cb_ListMicIn.Enabled = true;
+            tb_SessionId.Enabled = true;
+            RecordingForm_CB_SaveAudio.Enabled = true;
+
             DestroyTimerCounter();
             // Set cursor as default arrow
             Cursor.Current = Cursors.Default;
@@ -282,7 +306,7 @@ namespace AudioRecorderApps
 
         private void worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Logger.GetInstance().Logging.Error(String.Format("Cannot init the session {0}", e.Error));
+            AppLogger.GetInstance().Logging.Error(String.Format("Cannot init the session {0}", e.Error));
             ///Close all connection
             StopRecording();
             if (e.Cancelled)
@@ -312,20 +336,20 @@ namespace AudioRecorderApps
             if (isSuccessfull == false)
             {
                 worker.ReportProgress(0);
-                Logger.GetInstance().Logging.Warn("Cannot create session info");
+                AppLogger.GetInstance().Logging.Warn("Cannot create session info");
                 return ;
             }
             isSuccessfull = CreateAudioStreamer();
             if (isSuccessfull == false)
             {
-                Logger.GetInstance().Logging.Warn("Cannot create audio streammer");
+                AppLogger.GetInstance().Logging.Warn("Cannot create audio streammer");
                 worker.ReportProgress(1);
                 return;
             }
             isSuccessfull = CreateAudioRecorder();
             if (isSuccessfull == false)
             {
-                Logger.GetInstance().Logging.Warn("Cannot create audio recorder");
+                AppLogger.GetInstance().Logging.Warn("Cannot create audio recorder");
                 worker.ReportProgress(2);
                 return;
             }
@@ -556,6 +580,27 @@ namespace AudioRecorderApps
                     "Bạn có muốn ghi đè?", "Hệ thống", MessageBoxButtons.YesNo);
                 if (dr == DialogResult.No) return false;
 
+                try
+                {
+                    if (Directory.Exists(GetAudioChildPath()))
+                    {
+                        foreach (var file in Directory.GetFiles(GetAudioChildPath()))
+                        {
+                            File.Delete(file);
+                        }
+                    }
+
+                    return true;
+                } catch
+                {
+                    // Open Dialog
+                    MessageBox.Show("Không thể xoá dữ liệu. Xin hãy đổi tên tệp âm thanh", "Hệ thống", MessageBoxButtons.OK);
+                    return false;
+                }
+            }
+
+            try
+            {
                 if (Directory.Exists(GetAudioChildPath()))
                 {
                     foreach (var file in Directory.GetFiles(GetAudioChildPath()))
@@ -563,24 +608,20 @@ namespace AudioRecorderApps
                         File.Delete(file);
                     }
                 }
-
-                return true;
-            }
-
-            if (Directory.Exists(GetAudioChildPath()))
+            } catch
             {
-                foreach (var file in Directory.GetFiles(GetAudioChildPath()))
-                {
-                    File.Delete(file);
-                }
+                // Open Dialog
+                MessageBox.Show("Không thể xoá dữ liệu. Xin hãy đổi tên tệp âm thanh", "Hệ thống", MessageBoxButtons.OK);
+                return false;
             }
+            
 
             return true;
         }
 
         public void OnTimerEvent(object source, EventArgs e)
         {
-            Logger.GetInstance().Logging.Info(String.Format("Time stamp {0}", mTimeCounter));
+            AppLogger.GetInstance().Logging.Info(String.Format("Time stamp {0}", mTimeCounter));
             if (mIsPause == false)
             {
                 mTimeCounter += 1;
@@ -593,6 +634,7 @@ namespace AudioRecorderApps
         private void decorate_volumeter_bar(WaveInEventArgs args)
         {
             float max = 0;
+
             // interpret as 16 bit audio
             for (int index = 0; index < args.BytesRecorded; index += 2)
             {
@@ -604,10 +646,8 @@ namespace AudioRecorderApps
                 if (sample32 < 0) sample32 = -sample32;
                 // is this the max value?
                 if (sample32 > max) max = sample32;
-
             }
             VM_VolumeMeter.Invoke(new DUpdateMicValueBar(UpdateMicVolume), max);
-
         }
 
         private void tb_SessionId_TextChanged(object sender, EventArgs e)
@@ -786,7 +826,7 @@ namespace AudioRecorderApps
             // Assign title bar
             Version v = new Version(Application.
             ProductVersion);
-            this.Text = String.Format("Audio Recorder And Translator {0}.{1} @Quoc Hoi", v.Major, v.Minor);
+            this.Text = String.Format("Audio Recorder (Hop To) {0}.{1} @Quoc Hoi", 2, 0);
 
             /*foreach (var file in Directory.GetFiles(@"C:\Users\hungnv\Desktop\Test\1"))
             {
@@ -824,16 +864,18 @@ namespace AudioRecorderApps
         {
             if (e.ProgressPercentage == 0)
             {
-                Logger.GetInstance().Logging.Warn("Không thể khởi tạo thông tin phiên\n" +
-                    "Tạo phiên mới hoặc xóa thông tin cũ và thử lại");
+                AppLogger.GetInstance().Logging.Warn("Không thể khởi tạo thông tin phiên\n" +
+                    "Tạo phiên mới hoặc xóa thông tin cũ và thử lại.");
                 ///Connection errrors. Close all connection
                 MessageBox.Show("Không thể khởi tạo thông tin phiên\n" +
-                    "Tạo phiên mới hoặc xóa thông tin cũ và thử lại", "Thông tin phiên",
+                    "1. Kiểm tra phiên có tồn tại không?\n" +
+                    "2. Xoá tệp âm thanh trong phiên nếu tồn tại\n" +
+                    "3. Kiểm tra lại quyền truy cập vào phiên", "Thông tin phiên",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (e.ProgressPercentage == 1)
             {
-                Logger.GetInstance().Logging.Warn("Không kết nối được Server.\n" +
+                AppLogger.GetInstance().Logging.Warn("Không kết nối được Server.\n" +
                     "Kiểm tra lại cấu hình server dịch");
                 ///Connection errrors. Close all connection
                 MessageBox.Show("Không kết nối được Server.\n" +
@@ -842,7 +884,7 @@ namespace AudioRecorderApps
             }
             if (e.ProgressPercentage == 2)
             {
-                Logger.GetInstance().Logging.Warn("Không khởi tạo được thiết bị ghi âm.\n" +
+                AppLogger.GetInstance().Logging.Warn("Không khởi tạo được thiết bị ghi âm.\n" +
                     "Kiểm tra lại cấu hình thiết bị ghi âm");
                 ///Connection errrors. Close all connection
                 MessageBox.Show("Không thể khởi tạo thông tin phiên\n" +
@@ -857,7 +899,7 @@ namespace AudioRecorderApps
         }
         private void worker_RunWorkerOfflineCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            Logger.GetInstance().Logging.Error(String.Format("Cannot init the session {0}", e.Error));
+            AppLogger.GetInstance().Logging.Error(String.Format("Cannot init the session {0}", e.Error));
             ///Close all connection
             if (e.Cancelled)
             {
@@ -871,19 +913,19 @@ namespace AudioRecorderApps
         private bool CreateOfflineSessionInfo()
         {
             //bool isSuccessfull = Request.RequestChangeSessionStatus(mSessionId, 1);
-            bool isSuccessfull = Request.CreateOfflineSession(mSessionId, mAudioName + ".mp3");
+            bool isSuccessfull = Request.RequestChangeOfflineSessionStatus(mSessionId, 1);
             if (isSuccessfull == false)
             {
                 return isSuccessfull;
             }
-            
 
+            isSuccessfull = Request.CreateOfflineSession(mSessionId, mAudioName + ".mp3");
             return isSuccessfull;
         }
 
         private bool CloseOfflineSession()
-        {
-            bool isSuccessfull = true; // Request.RequestChangeSessionStatus(tb_SessionId.Text, 0);
+        { 
+            bool isSuccessfull = Request.RequestChangeOfflineSessionStatus(tb_SessionId.Text, 0);
             return isSuccessfull;
         }
 
@@ -896,10 +938,16 @@ namespace AudioRecorderApps
                 //Send Audio to Websocket Client
                 lock (balanceLock)
                 {
-                    byte[] rawAudio = new byte[args.BytesRecorded];
-                    args.Buffer.CopyTo(rawAudio,0);
-                    mRawAudioData.Enqueue(new WaveInEventArgs(rawAudio, args.BytesRecorded));
-                    mRawAudioLength += args.BytesRecorded;
+                    try { 
+                        byte[] rawAudio = new byte[args.BytesRecorded]; 
+                        args.Buffer.CopyTo(rawAudio,0);
+                        mRawAudioData.Enqueue(new WaveInEventArgs(rawAudio, rawAudio.Length));
+                        mRawAudioLength += args.BytesRecorded;
+                    }
+                    catch
+                    {
+
+                    }
                 }
             }
             if (this.RecordingForm_CB_SaveAudio.Checked)
@@ -947,13 +995,13 @@ namespace AudioRecorderApps
             if (isSuccessfull == false)
             {
                 worker.ReportProgress(0);
-                Logger.GetInstance().Logging.Warn("Cannot create session info");
+                AppLogger.GetInstance().Logging.Warn("Cannot create session info");
                 return;
             }
             isSuccessfull = CreateOfflineAudioRecorder();
             if (isSuccessfull == false)
             {
-                Logger.GetInstance().Logging.Warn("Cannot create audio recorder");
+                AppLogger.GetInstance().Logging.Warn("Cannot create audio recorder");
                 worker.ReportProgress(2);
                 return;
             }
@@ -972,6 +1020,12 @@ namespace AudioRecorderApps
             }
 
             worker.ReportProgress(4);
+
+            // Start recording.
+            // Change the state of the connecting status
+            LB_ConnectionState.Invoke(new DUpdateConnectionStatus(UpdateConectionStatus), true);
+
+
             while (worker.CancellationPending == false)
             {
                 ProcessRawAudioData();
@@ -986,6 +1040,7 @@ namespace AudioRecorderApps
         private void ProcessRawAudioData(bool is_finish = false)
         {
             string path = null;
+            bool is_success = true;
             if (is_finish == false)
             {
                 //1. Check total length off audio
@@ -993,18 +1048,31 @@ namespace AudioRecorderApps
                 {
                     return;
                 }
-                path = SaveAudioFromBufferToFile();
+                path = SaveAudioFromBufferToFile(ref is_success);
             }
             else
             {
-                path = SaveAllAudioFromBufferFile();
+                path = SaveAllAudioFromBufferFile(ref is_success);
             }
             //2. Save to wav file and Put in list audio buffer
 
-            if (path != null)
-            {
-                AudioFileProperty mp3File = new AudioFileProperty(path);
 
+            if (is_success)
+            {
+                if (path != null)
+                {
+                    AudioFileProperty mp3File = new AudioFileProperty(path);
+                    mListOfflineAudioFile.Add(mp3File);
+                } else
+                {
+                    // The audio length is too short
+                    AppLogger.GetInstance().Logging.Error("Remain audio length is too sort");
+                }
+            } else
+            {
+                AppLogger.GetInstance().Logging.Error("Cannot save file to current path: " + path);
+                AudioFileProperty mp3File = new AudioFileProperty(path);
+                mp3File.status = AudioFileProperty.TranslateStatus.Error;
                 mListOfflineAudioFile.Add(mp3File);
             }
             //4. Send to backend server
@@ -1017,6 +1085,8 @@ namespace AudioRecorderApps
         private void sendAudioFileToBackend()
         {
             double startSplit = 0;
+
+            bool isSentSuccessFully = true;
             for (int i = 0; i < mListOfflineAudioFile.Count; ++i )
             {
                 AudioFileProperty file = mListOfflineAudioFile[i];
@@ -1026,6 +1096,7 @@ namespace AudioRecorderApps
                     bool sendResult = Request.UploadFileToServer(mSessionId, file.FullFilePath, startSplit);
                     if (sendResult == false)
                     {
+                        isSentSuccessFully = false;
                         break;
                     }
                     else
@@ -1036,6 +1107,15 @@ namespace AudioRecorderApps
                 }
                 startSplit += file.DurationInSecond;
             }
+
+            // Update the state of the connection status
+            if(isSentSuccessFully == true)
+            {
+                LB_ConnectionState.Invoke(new DUpdateConnectionStatus(UpdateConectionStatus), true);
+            } else
+            {
+                LB_ConnectionState.Invoke(new DUpdateConnectionStatus(UpdateConectionStatus), false);
+            }
         }
 
         private bool IsEnoughData()
@@ -1045,10 +1125,11 @@ namespace AudioRecorderApps
             return audioLengthInMinute >= Int16.Parse(mRecordingTime) ? true : false;
         }
 
-        private string SaveAllAudioFromBufferFile()
+        private string SaveAllAudioFromBufferFile(ref bool is_success)
         {
             lock (balanceLock)
             {
+                // Not save the very short
                 if (mRawAudioData.Count < 20)
                 {
                     mRawAudioData.Clear();
@@ -1056,9 +1137,11 @@ namespace AudioRecorderApps
                     return null;
                 }
             }
+            string uniqueSuffix = Guid.NewGuid().ToString();
+            string fileName = GetWavAudioChildName($"{mListOfflineAudioFile.Count + 1}_{uniqueSuffix}");
+            string mp3FileName = GetMp3AudioChildPath(String.Format("{0}_{1}", TB_FileName.Text, (mListOfflineAudioFile.Count + 1).ToString()));
             try
             {
-                string fileName = GetWavAudioChildName((mListOfflineAudioFile.Count + 1).ToString());
                 AudioWriter wavWriter = new AudioWriter(fileName);
                 lock (balanceLock)
                 {
@@ -1070,29 +1153,33 @@ namespace AudioRecorderApps
                     mRawAudioLength = 0;
                 }
                 wavWriter.Dispose();
-                string mp3FileName = GetMp3AudioChildPath((mListOfflineAudioFile.Count + 1).ToString());
                 wavWriter.WavToMP3(fileName, mp3FileName);
                 //Remove wavfile
                 File.Delete(fileName);
+                is_success = true;
                 return mp3FileName;
             }
             catch
             {
-                return null;
+                AppLogger.GetInstance().Logging.Error("Cannot save file to current path");
+                is_success = false;
+                return mp3FileName;
             }
         }
 
-        private string SaveAudioFromBufferToFile()
+        private string SaveAudioFromBufferToFile(ref bool is_success)
         {
+            string mp3FileName = GetMp3AudioChildPath(String.Format("{0}_{1}", TB_FileName.Text, (mListOfflineAudioFile.Count + 1).ToString()));
+            string uniqueSuffix = Guid.NewGuid().ToString();
+            string wavFileName = GetWavAudioChildName($"{mListOfflineAudioFile.Count + 1}_{uniqueSuffix}");
             try
             {
-                string fileName = GetWavAudioChildName((mListOfflineAudioFile.Count + 1).ToString());
                 Queue<WaveInEventArgs> remainRawData = new Queue<WaveInEventArgs>();
                 
                 double savedAudioLengthInArrayLength = 0;
                 double saveAudioLengthInSecond = 0;
                 int remainAudioLength = 0;
-                AudioWriter wavWriter = new AudioWriter(fileName);
+                AudioWriter wavWriter = new AudioWriter(wavFileName);
                 lock (balanceLock)
                 {
                     while (saveAudioLengthInSecond < Int16.Parse(mRecordingTime) * 60 && mRawAudioData.Count > 0)
@@ -1112,21 +1199,26 @@ namespace AudioRecorderApps
 
                     while (mRawAudioData.Count > 0)
                     {
-                        remainRawData.Enqueue(mRawAudioData.Dequeue());
+                        WaveInEventArgs rawData = mRawAudioData.Dequeue();
+                        remainRawData.Enqueue(rawData);
+                        remainAudioLength += rawData.BytesRecorded;
                     }
                     mRawAudioData = remainRawData;
                     mRawAudioLength = remainAudioLength;
                 }
                 wavWriter.Dispose();
-                string mp3FileName = GetMp3AudioChildPath((mListOfflineAudioFile.Count + 1).ToString());
-                wavWriter.WavToMP3(fileName, mp3FileName);
+                wavWriter.WavToMP3(wavFileName, mp3FileName);
+
+                is_success = true;
                 //Remove wavfile
-                File.Delete(fileName);
+                File.Delete(wavFileName);
                 return mp3FileName;
             }
             catch
             {
-                return null;
+                is_success = false;
+                AppLogger.GetInstance().Logging.Error("Cannot save file to current path");
+                return mp3FileName;
             }
         }
 
@@ -1217,6 +1309,29 @@ namespace AudioRecorderApps
         private void ListAudioFile_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AudioRecording_Tab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(AudioRecording_Tab.SelectedIndex == offlineRecordingTabIndex)
+            {
+                label8.Text = "Ghi Âm \nHọp Tổ";
+            } else if(AudioRecording_Tab.SelectedIndex == onlineRecordingTabIndex)
+            {
+                label8.Text = "Ghi Âm \nHội Trường";
+            }
+        }
+
+        private void btn_test_mic_Click(object sender, EventArgs e)
+        {
+            // Open the test mic form here
+            AudioTesting micTest = new AudioTesting();
+            micTest.ShowDialog();
         }
     }
 }

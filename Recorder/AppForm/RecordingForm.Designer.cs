@@ -40,6 +40,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.LB_Timer = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btn_test_mic = new System.Windows.Forms.Button();
             this.TB_AudioLength = new System.Windows.Forms.TextBox();
             this.tb_SessionId = new System.Windows.Forms.TextBox();
             this.TB_FileName = new System.Windows.Forms.TextBox();
@@ -55,6 +56,8 @@
             this.BT_Start = new System.Windows.Forms.Button();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.AudioRecording_Tab = new CustomControl.AudioRecordingTabControl();
             this.Online_Recording_Tab = new System.Windows.Forms.TabPage();
             this.RT_FullSentence = new System.Windows.Forms.RichTextBox();
@@ -66,18 +69,16 @@
             this.duration = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.fullPath = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.AudioRecording_Tab.SuspendLayout();
             this.Online_Recording_Tab.SuspendLayout();
             this.OfflineRecording_Tab.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -87,12 +88,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mởThưMụcToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(168, 28);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(154, 26);
             // 
             // mởThưMụcToolStripMenuItem
             // 
             this.mởThưMụcToolStripMenuItem.Name = "mởThưMụcToolStripMenuItem";
-            this.mởThưMụcToolStripMenuItem.Size = new System.Drawing.Size(167, 24);
+            this.mởThưMụcToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
             this.mởThưMụcToolStripMenuItem.Text = "Mở Thư Mục";
             // 
             // groupBox1
@@ -104,11 +105,11 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.LB_Timer);
             this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 528);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(2, 429);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(211, 151);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(158, 123);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin ghi âm";
@@ -117,9 +118,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(4, 33);
+            this.label3.Location = new System.Drawing.Point(3, 27);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 19);
+            this.label3.Size = new System.Drawing.Size(67, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Thời Gian:";
             // 
@@ -128,13 +130,13 @@
             this.VM_VolumeMeter.Amplitude = 0F;
             this.VM_VolumeMeter.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VM_VolumeMeter.ForeColor = System.Drawing.Color.Chartreuse;
-            this.VM_VolumeMeter.Location = new System.Drawing.Point(11, 86);
-            this.VM_VolumeMeter.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.VM_VolumeMeter.Location = new System.Drawing.Point(8, 70);
+            this.VM_VolumeMeter.Margin = new System.Windows.Forms.Padding(2);
             this.VM_VolumeMeter.MaxDb = 18F;
             this.VM_VolumeMeter.MinDb = -60F;
             this.VM_VolumeMeter.Name = "VM_VolumeMeter";
             this.VM_VolumeMeter.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            this.VM_VolumeMeter.Size = new System.Drawing.Size(195, 23);
+            this.VM_VolumeMeter.Size = new System.Drawing.Size(146, 19);
             this.VM_VolumeMeter.TabIndex = 5;
             this.VM_VolumeMeter.Text = "volumeMeter1";
             // 
@@ -143,9 +145,10 @@
             this.LB_ConnectionState.AutoSize = true;
             this.LB_ConnectionState.BackColor = System.Drawing.Color.Red;
             this.LB_ConnectionState.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_ConnectionState.Location = new System.Drawing.Point(101, 121);
+            this.LB_ConnectionState.Location = new System.Drawing.Point(76, 98);
+            this.LB_ConnectionState.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LB_ConnectionState.Name = "LB_ConnectionState";
-            this.LB_ConnectionState.Size = new System.Drawing.Size(37, 19);
+            this.LB_ConnectionState.Size = new System.Drawing.Size(36, 16);
             this.LB_ConnectionState.TabIndex = 10;
             this.LB_ConnectionState.Text = "       ";
             // 
@@ -153,9 +156,10 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(5, 64);
+            this.label2.Location = new System.Drawing.Point(4, 52);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 19);
+            this.label2.Size = new System.Drawing.Size(75, 16);
             this.label2.TabIndex = 4;
             this.label2.Text = "Mic Volume";
             // 
@@ -163,9 +167,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(5, 121);
+            this.label4.Location = new System.Drawing.Point(4, 98);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 19);
+            this.label4.Size = new System.Drawing.Size(51, 16);
             this.label4.TabIndex = 9;
             this.label4.Text = "Kết Nối";
             // 
@@ -173,15 +178,17 @@
             // 
             this.LB_Timer.AutoSize = true;
             this.LB_Timer.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LB_Timer.Location = new System.Drawing.Point(91, 28);
+            this.LB_Timer.Location = new System.Drawing.Point(68, 23);
+            this.LB_Timer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.LB_Timer.Name = "LB_Timer";
-            this.LB_Timer.Size = new System.Drawing.Size(96, 27);
+            this.LB_Timer.Size = new System.Drawing.Size(72, 21);
             this.LB_Timer.TabIndex = 7;
             this.LB_Timer.Text = "00:00:00";
             this.LB_Timer.Click += new System.EventHandler(this.LB_Timer_Click);
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btn_test_mic);
             this.groupBox2.Controls.Add(this.TB_AudioLength);
             this.groupBox2.Controls.Add(this.tb_SessionId);
             this.groupBox2.Controls.Add(this.TB_FileName);
@@ -191,22 +198,32 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.cb_ListMicIn);
             this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(3, 100);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Location = new System.Drawing.Point(2, 71);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(207, 278);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox2.Size = new System.Drawing.Size(155, 251);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Thông tin phiên";
             // 
+            // btn_test_mic
+            // 
+            this.btn_test_mic.Location = new System.Drawing.Point(4, 113);
+            this.btn_test_mic.Name = "btn_test_mic";
+            this.btn_test_mic.Size = new System.Drawing.Size(146, 25);
+            this.btn_test_mic.TabIndex = 10;
+            this.btn_test_mic.Text = "Kiểm tra mic";
+            this.btn_test_mic.UseVisualStyleBackColor = true;
+            this.btn_test_mic.Click += new System.EventHandler(this.btn_test_mic_Click);
+            // 
             // TB_AudioLength
             // 
             this.TB_AudioLength.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_AudioLength.Location = new System.Drawing.Point(5, 241);
-            this.TB_AudioLength.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TB_AudioLength.Location = new System.Drawing.Point(4, 222);
+            this.TB_AudioLength.Margin = new System.Windows.Forms.Padding(2);
             this.TB_AudioLength.Name = "TB_AudioLength";
-            this.TB_AudioLength.Size = new System.Drawing.Size(193, 27);
+            this.TB_AudioLength.Size = new System.Drawing.Size(146, 23);
             this.TB_AudioLength.TabIndex = 9;
             this.TB_AudioLength.TextChanged += new System.EventHandler(this.TB_AudioLength_TextChanged);
             this.TB_AudioLength.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_SessionId_KeyPress);
@@ -214,10 +231,10 @@
             // tb_SessionId
             // 
             this.tb_SessionId.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_SessionId.Location = new System.Drawing.Point(5, 46);
-            this.tb_SessionId.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tb_SessionId.Location = new System.Drawing.Point(4, 37);
+            this.tb_SessionId.Margin = new System.Windows.Forms.Padding(2);
             this.tb_SessionId.Name = "tb_SessionId";
-            this.tb_SessionId.Size = new System.Drawing.Size(193, 27);
+            this.tb_SessionId.Size = new System.Drawing.Size(146, 23);
             this.tb_SessionId.TabIndex = 0;
             this.tb_SessionId.TextChanged += new System.EventHandler(this.tb_SessionId_TextChanged);
             this.tb_SessionId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_SessionId_KeyPress);
@@ -225,10 +242,10 @@
             // TB_FileName
             // 
             this.TB_FileName.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TB_FileName.Location = new System.Drawing.Point(5, 175);
-            this.TB_FileName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.TB_FileName.Location = new System.Drawing.Point(4, 173);
+            this.TB_FileName.Margin = new System.Windows.Forms.Padding(2);
             this.TB_FileName.Name = "TB_FileName";
-            this.TB_FileName.Size = new System.Drawing.Size(193, 27);
+            this.TB_FileName.Size = new System.Drawing.Size(146, 23);
             this.TB_FileName.TabIndex = 8;
             this.TB_FileName.TextChanged += new System.EventHandler(this.TB_FileName_TextChanged);
             // 
@@ -236,9 +253,10 @@
             // 
             this.sessionId.AutoSize = true;
             this.sessionId.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sessionId.Location = new System.Drawing.Point(3, 23);
+            this.sessionId.Location = new System.Drawing.Point(2, 19);
+            this.sessionId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.sessionId.Name = "sessionId";
-            this.sessionId.Size = new System.Drawing.Size(78, 19);
+            this.sessionId.Size = new System.Drawing.Size(65, 16);
             this.sessionId.TabIndex = 1;
             this.sessionId.Text = "Mã  Phiên";
             // 
@@ -246,9 +264,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(3, 219);
+            this.label6.Location = new System.Drawing.Point(2, 204);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 19);
+            this.label6.Size = new System.Drawing.Size(74, 16);
             this.label6.TabIndex = 7;
             this.label6.Text = "Độ Dài Tệp";
             // 
@@ -256,9 +275,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(3, 86);
+            this.label1.Location = new System.Drawing.Point(2, 66);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 19);
+            this.label1.Size = new System.Drawing.Size(46, 16);
             this.label1.TabIndex = 2;
             this.label1.Text = "Mic In";
             // 
@@ -266,9 +286,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(3, 153);
+            this.label5.Location = new System.Drawing.Point(2, 155);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 19);
+            this.label5.Size = new System.Drawing.Size(56, 16);
             this.label5.TabIndex = 6;
             this.label5.Text = "Tên Tệp";
             // 
@@ -276,10 +297,10 @@
             // 
             this.cb_ListMicIn.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_ListMicIn.FormattingEnabled = true;
-            this.cb_ListMicIn.Location = new System.Drawing.Point(5, 108);
-            this.cb_ListMicIn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cb_ListMicIn.Location = new System.Drawing.Point(4, 84);
+            this.cb_ListMicIn.Margin = new System.Windows.Forms.Padding(2);
             this.cb_ListMicIn.Name = "cb_ListMicIn";
-            this.cb_ListMicIn.Size = new System.Drawing.Size(193, 27);
+            this.cb_ListMicIn.Size = new System.Drawing.Size(146, 24);
             this.cb_ListMicIn.TabIndex = 3;
             this.cb_ListMicIn.SelectedIndexChanged += new System.EventHandler(this.cb_ListMicIn_SelectedIndexChanged);
             // 
@@ -290,11 +311,11 @@
             this.groupBox3.Controls.Add(this.BT_Pause);
             this.groupBox3.Controls.Add(this.BT_Start);
             this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(3, 401);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Location = new System.Drawing.Point(2, 326);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(211, 101);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox3.Size = new System.Drawing.Size(158, 82);
             this.groupBox3.TabIndex = 14;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Ghi âm";
@@ -304,19 +325,20 @@
             this.RecordingForm_CB_SaveAudio.AutoSize = true;
             this.RecordingForm_CB_SaveAudio.Checked = true;
             this.RecordingForm_CB_SaveAudio.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.RecordingForm_CB_SaveAudio.Location = new System.Drawing.Point(115, 26);
-            this.RecordingForm_CB_SaveAudio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RecordingForm_CB_SaveAudio.Location = new System.Drawing.Point(86, 21);
+            this.RecordingForm_CB_SaveAudio.Margin = new System.Windows.Forms.Padding(2);
             this.RecordingForm_CB_SaveAudio.Name = "RecordingForm_CB_SaveAudio";
-            this.RecordingForm_CB_SaveAudio.Size = new System.Drawing.Size(18, 17);
+            this.RecordingForm_CB_SaveAudio.Size = new System.Drawing.Size(15, 14);
             this.RecordingForm_CB_SaveAudio.TabIndex = 13;
             this.RecordingForm_CB_SaveAudio.UseVisualStyleBackColor = true;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 25);
+            this.label7.Location = new System.Drawing.Point(4, 20);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 19);
+            this.label7.Size = new System.Drawing.Size(31, 16);
             this.label7.TabIndex = 12;
             this.label7.Text = "Lưu";
             // 
@@ -324,10 +346,10 @@
             // 
             this.BT_Pause.Enabled = false;
             this.BT_Pause.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_Pause.Location = new System.Drawing.Point(115, 63);
-            this.BT_Pause.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BT_Pause.Location = new System.Drawing.Point(86, 51);
+            this.BT_Pause.Margin = new System.Windows.Forms.Padding(2);
             this.BT_Pause.Name = "BT_Pause";
-            this.BT_Pause.Size = new System.Drawing.Size(85, 32);
+            this.BT_Pause.Size = new System.Drawing.Size(64, 26);
             this.BT_Pause.TabIndex = 11;
             this.BT_Pause.Text = "Pause";
             this.BT_Pause.UseVisualStyleBackColor = true;
@@ -336,10 +358,10 @@
             // BT_Start
             // 
             this.BT_Start.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BT_Start.Location = new System.Drawing.Point(8, 63);
-            this.BT_Start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BT_Start.Location = new System.Drawing.Point(6, 51);
+            this.BT_Start.Margin = new System.Windows.Forms.Padding(2);
             this.BT_Start.Name = "BT_Start";
-            this.BT_Start.Size = new System.Drawing.Size(87, 32);
+            this.BT_Start.Size = new System.Drawing.Size(65, 26);
             this.BT_Start.TabIndex = 6;
             this.BT_Start.Text = "Start";
             this.BT_Start.UseVisualStyleBackColor = true;
@@ -355,11 +377,39 @@
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.AudioRecording_Tab);
-            this.panel1.Location = new System.Drawing.Point(12, 7);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(9, 6);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1109, 686);
+            this.panel1.Size = new System.Drawing.Size(832, 558);
             this.panel1.TabIndex = 16;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.groupBox2);
+            this.panel2.Controls.Add(this.groupBox3);
+            this.panel2.Controls.Add(this.groupBox1);
+            this.panel2.Location = new System.Drawing.Point(838, 6);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(164, 558);
+            this.panel2.TabIndex = 16;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label8.Location = new System.Drawing.Point(0, 7);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(110, 62);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "Ghi Âm \r\nHọp Tổ";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label8.Click += new System.EventHandler(this.label8_Click);
             // 
             // AudioRecording_Tab
             // 
@@ -368,24 +418,25 @@
             this.AudioRecording_Tab.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AudioRecording_Tab.HotTrack = true;
             this.AudioRecording_Tab.Location = new System.Drawing.Point(0, 0);
-            this.AudioRecording_Tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.AudioRecording_Tab.Margin = new System.Windows.Forms.Padding(2);
             this.AudioRecording_Tab.Name = "AudioRecording_Tab";
             this.AudioRecording_Tab.Selectable = true;
             this.AudioRecording_Tab.SelectedIndex = 0;
             this.AudioRecording_Tab.ShowToolTips = true;
-            this.AudioRecording_Tab.Size = new System.Drawing.Size(1107, 684);
+            this.AudioRecording_Tab.Size = new System.Drawing.Size(830, 556);
             this.AudioRecording_Tab.TabIndex = 15;
+            this.AudioRecording_Tab.SelectedIndexChanged += new System.EventHandler(this.AudioRecording_Tab_SelectedIndexChanged);
             // 
             // Online_Recording_Tab
             // 
             this.Online_Recording_Tab.Controls.Add(this.RT_FullSentence);
             this.Online_Recording_Tab.Controls.Add(this.RT_ShortSentence);
             this.Online_Recording_Tab.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Online_Recording_Tab.Location = new System.Drawing.Point(4, 25);
-            this.Online_Recording_Tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Online_Recording_Tab.Location = new System.Drawing.Point(4, 22);
+            this.Online_Recording_Tab.Margin = new System.Windows.Forms.Padding(2);
             this.Online_Recording_Tab.Name = "Online_Recording_Tab";
-            this.Online_Recording_Tab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Online_Recording_Tab.Size = new System.Drawing.Size(1099, 655);
+            this.Online_Recording_Tab.Padding = new System.Windows.Forms.Padding(2);
+            this.Online_Recording_Tab.Size = new System.Drawing.Size(822, 530);
             this.Online_Recording_Tab.TabIndex = 0;
             this.Online_Recording_Tab.Text = "Dịch Trực Tuyến";
             this.Online_Recording_Tab.ToolTipText = "Dịch trực tuyến";
@@ -396,11 +447,11 @@
             this.RT_FullSentence.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RT_FullSentence.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RT_FullSentence.Location = new System.Drawing.Point(0, 0);
-            this.RT_FullSentence.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.RT_FullSentence.Margin = new System.Windows.Forms.Padding(2);
             this.RT_FullSentence.Name = "RT_FullSentence";
             this.RT_FullSentence.ReadOnly = true;
             this.RT_FullSentence.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.RT_FullSentence.Size = new System.Drawing.Size(1099, 530);
+            this.RT_FullSentence.Size = new System.Drawing.Size(824, 431);
             this.RT_FullSentence.TabIndex = 0;
             this.RT_FullSentence.Text = "";
             // 
@@ -408,12 +459,12 @@
             // 
             this.RT_ShortSentence.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.RT_ShortSentence.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.RT_ShortSentence.Location = new System.Drawing.Point(0, 534);
-            this.RT_ShortSentence.Margin = new System.Windows.Forms.Padding(5, 2, 3, 2);
+            this.RT_ShortSentence.Location = new System.Drawing.Point(0, 434);
+            this.RT_ShortSentence.Margin = new System.Windows.Forms.Padding(4, 2, 2, 2);
             this.RT_ShortSentence.Name = "RT_ShortSentence";
             this.RT_ShortSentence.ReadOnly = true;
             this.RT_ShortSentence.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedVertical;
-            this.RT_ShortSentence.Size = new System.Drawing.Size(1099, 119);
+            this.RT_ShortSentence.Size = new System.Drawing.Size(824, 97);
             this.RT_ShortSentence.TabIndex = 0;
             this.RT_ShortSentence.Text = "";
             // 
@@ -421,14 +472,14 @@
             // 
             this.OfflineRecording_Tab.Controls.Add(this.groupBox4);
             this.OfflineRecording_Tab.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.OfflineRecording_Tab.Location = new System.Drawing.Point(4, 25);
-            this.OfflineRecording_Tab.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.OfflineRecording_Tab.Location = new System.Drawing.Point(4, 22);
+            this.OfflineRecording_Tab.Margin = new System.Windows.Forms.Padding(2);
             this.OfflineRecording_Tab.Name = "OfflineRecording_Tab";
-            this.OfflineRecording_Tab.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.OfflineRecording_Tab.Size = new System.Drawing.Size(1099, 655);
+            this.OfflineRecording_Tab.Padding = new System.Windows.Forms.Padding(2);
+            this.OfflineRecording_Tab.Size = new System.Drawing.Size(822, 530);
             this.OfflineRecording_Tab.TabIndex = 1;
-            this.OfflineRecording_Tab.Text = "Dịch & Ghi Tệp";
-            this.OfflineRecording_Tab.ToolTipText = "Ghi Tệp và dịch";
+            this.OfflineRecording_Tab.Text = "Ghi âm Họp tổ";
+            this.OfflineRecording_Tab.ToolTipText = "Ghi âm họp tổ";
             this.OfflineRecording_Tab.UseVisualStyleBackColor = true;
             // 
             // groupBox4
@@ -436,11 +487,11 @@
             this.groupBox4.Controls.Add(this.ListAudioFile);
             this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.Location = new System.Drawing.Point(0, 0);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox4.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox4.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox4.Size = new System.Drawing.Size(1092, 655);
+            this.groupBox4.Size = new System.Drawing.Size(819, 532);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh sách file";
@@ -455,11 +506,11 @@
             this.ListAudioFile.ContextMenuStrip = this.contextMenuStrip1;
             this.ListAudioFile.GridLines = true;
             this.ListAudioFile.HideSelection = false;
-            this.ListAudioFile.Location = new System.Drawing.Point(3, 22);
-            this.ListAudioFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ListAudioFile.Location = new System.Drawing.Point(2, 18);
+            this.ListAudioFile.Margin = new System.Windows.Forms.Padding(2);
             this.ListAudioFile.MultiSelect = false;
             this.ListAudioFile.Name = "ListAudioFile";
-            this.ListAudioFile.Size = new System.Drawing.Size(1089, 631);
+            this.ListAudioFile.Size = new System.Drawing.Size(818, 513);
             this.ListAudioFile.SmallImageList = this.imageList1;
             this.ListAudioFile.TabIndex = 0;
             this.ListAudioFile.UseCompatibleStateImageBehavior = false;
@@ -469,7 +520,7 @@
             // name
             // 
             this.name.Text = "Tên";
-            this.name.Width = 125;
+            this.name.Width = 172;
             // 
             // duration
             // 
@@ -487,44 +538,18 @@
             this.fullPath.Text = "Đường dẫn";
             this.fullPath.Width = 702;
             // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.groupBox2);
-            this.panel2.Controls.Add(this.groupBox3);
-            this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Location = new System.Drawing.Point(1117, 7);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(218, 686);
-            this.panel2.TabIndex = 16;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label8.Location = new System.Drawing.Point(27, 10);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(158, 76);
-            this.label8.TabIndex = 15;
-            this.label8.Text = "Dịch Trực\r\nTuyến";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // AudioRecordingForms
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1347, 711);
+            this.ClientSize = new System.Drawing.Size(1012, 584);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MaximumSize = new System.Drawing.Size(1365, 758);
-            this.MinimumSize = new System.Drawing.Size(1365, 758);
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(1028, 623);
+            this.MinimumSize = new System.Drawing.Size(1028, 623);
             this.Name = "AudioRecordingForms";
             this.Text = "Audio Recording Apps";
             this.Load += new System.EventHandler(this.AudioRecordingForms_Load);
@@ -536,12 +561,12 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.AudioRecording_Tab.ResumeLayout(false);
             this.Online_Recording_Tab.ResumeLayout(false);
             this.OfflineRecording_Tab.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -585,6 +610,7 @@
         private System.Windows.Forms.ColumnHeader fullPath;
         private System.Windows.Forms.ToolStripMenuItem mởThưMụcToolStripMenuItem;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_test_mic;
     }
 }
 

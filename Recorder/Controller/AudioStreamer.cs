@@ -53,16 +53,16 @@ namespace AudioRecorderApps
                 if (!mWebsocket.IsAlive)
                 {
                     Thread.Sleep(5000);
-                    Logger.GetInstance().Logging.Info("Try Reconnect to server ");
+                    AppLogger.GetInstance().Logging.Info("Try Reconnect to server ");
                     if (mRetryConnectionCounter < MAX_RETRY_CONNECTION)
                     { 
                         mWebsocket.ConnectAsync();
                         mRetryConnectionCounter += 1;
-                        Logger.GetInstance().Logging.Info(String.Format("Number of connection retry {0}", mRetryConnectionCounter));
+                        AppLogger.GetInstance().Logging.Info(String.Format("Number of connection retry {0}", mRetryConnectionCounter));
                     }
                     else
                     {
-                        Logger.GetInstance().Logging.Info("Recreate the connection instance");
+                        AppLogger.GetInstance().Logging.Info("Recreate the connection instance");
                         RetryConnection();
                     }
                 }
@@ -135,7 +135,7 @@ namespace AudioRecorderApps
                 catch (InvalidOperationException e)
                 {
                     // Invalid operation
-                    Logger.GetInstance().Logging.Error("Sending Message In Closed State");
+                    AppLogger.GetInstance().Logging.Error("Sending Message In Closed State");
                     return false;
                 }
             }
@@ -155,7 +155,7 @@ namespace AudioRecorderApps
             catch (InvalidOperationException e)
             {
                 // Invalid operation
-                Logger.GetInstance().Logging.Error("Sending Message In Closed State");
+                AppLogger.GetInstance().Logging.Error("Sending Message In Closed State");
                 return false;
             }
             return false;

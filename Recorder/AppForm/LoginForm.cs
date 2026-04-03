@@ -63,17 +63,17 @@ namespace AudioRecorderApps
             if (token == null)
             {
                 ///Return False here
-                Logger.GetInstance().Logging.Error("Cannot login to system");
+                AppLogger.GetInstance().Logging.Error("Cannot login to system");
                 this.LoginForm_LB_Info.Text = "Không thể đăng nhập vào hệ thống.\nKiểm tra lại Tên đăng nhập/Mật khẩu";
             }
             else if (token.roleType == "2")
             {
-                Logger.GetInstance().Logging.Error("Cannot login to system with this role");
+                AppLogger.GetInstance().Logging.Error("Cannot login to system with this role");
                 this.LoginForm_LB_Info.Text = "Không thể đăng nhập vào hệ thống \nbằng quyền người duyệt";
             }
             else
             {
-                Logger.GetInstance().Logging.Info("Login done");
+                AppLogger.GetInstance().Logging.Info("Login done");
                 this.LoginForm_LB_Info.Text = "";
                 AppsSettings.GetInstance().AuthorizeToken = token.Authorization;
                 DialogResult = DialogResult.OK;

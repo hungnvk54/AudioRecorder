@@ -82,7 +82,7 @@ namespace AudioRecorderApps{
 				mRecorder.NumberOfBuffers = 5;
 				mRecorder.BufferMilliseconds = 300; //3200
 
-				Logger.GetInstance().Logging.Info(String.Format("Number of buffer {0}", mRecorder.NumberOfBuffers));
+				AppLogger.GetInstance().Logging.Info(String.Format("Number of buffer {0}", mRecorder.NumberOfBuffers));
 			}
 			
         }

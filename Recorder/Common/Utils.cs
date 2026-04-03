@@ -23,14 +23,14 @@ namespace AudioRecorderApps
         public static string ParsingWeboscketUrl(string sessionId)
         {
             string url = AppsSettings.GetInstance().WebsocketUrl + String.Format("/client/ws/speech?sessionId={0}&isMaster=APP", sessionId);
-            Logger.GetInstance().Logging.Info(String.Format("Outut Websocket url: {0}", url));
+            AppLogger.GetInstance().Logging.Info(String.Format("Outut Websocket url: {0}", url));
             return url;
         }
 
         public static string ParsingWeboscketUrl_Test(string sessionId)
         {
             string url = AppsSettings.GetInstance().WebsocketUrl + String.Format("/echo", sessionId);
-            Logger.GetInstance().Logging.Info(String.Format("Outut Websocket url: {0}", url));
+            AppLogger.GetInstance().Logging.Info(String.Format("Outut Websocket url: {0}", url));
             return url;
         }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace AudioRecorderApps
 {
@@ -20,5 +16,20 @@ namespace AudioRecorderApps
         {
             get; set;
         }
+    }
+
+    public class AudioTestServerResponseData
+    {
+        [JsonProperty(Required = Required.AllowNull)]
+        public string parts { get; set; }
+        [JsonProperty(Required = Required.AllowNull)]
+        public string full_text { get; set; }
+    }
+
+    public class AudioTestServerReponseMessage
+    {
+        public int status { get; set; }
+        public string message { get; set; }
+        public AudioTestServerResponseData data { get; set; }
     }
 }

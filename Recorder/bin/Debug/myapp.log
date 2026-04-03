@@ -1,0 +1,4 @@
+2025-04-18 18:07:59,585 [1] INFO AudioRecorderApps.AppLogger - save directory: C:\Users\Web3G\Documents\workspace\DuAn\01-Bocbang\AudioRecorder\Recorder\bin\Debug
+2025-04-18 18:08:00,382 [1] INFO AudioRecorderApps.AppLogger - 
+2025-04-18 18:08:00,385 [1] INFO AudioRecorderApps.AppLogger - {"Authorization":"Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjIiLCJleHAiOjE3NDU1NzkyODV9.Z84Hxx09LpPcUXui5CLiAu5f0jktRecnIFb0fpUTUeIi99hcW06p9ozwsFXgMj3KZOJN4NA5GwduGgCZ6vBg6w", "userName":"admin2","roleType":"0","firstName":"2","lastName":"Admin","id":"830","idTypeSession":"null"}
+2025-04-18 18:08:00,561 [1] INFO AudioRecorderApps.AppLogger - Login done

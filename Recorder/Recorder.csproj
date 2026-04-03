@@ -103,6 +103,18 @@
     <Compile Include="AppForm\AppGates.Designer.cs">
       <DependentUpon>AppGates.cs</DependentUpon>
     </Compile>
+    <Compile Include="AppForm\AudioTesting.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForm\AudioTesting.Designer.cs">
+      <DependentUpon>AudioTesting.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AppForm\FunctionSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AppForm\FunctionSelection.Designer.cs">
+      <DependentUpon>FunctionSelection.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controller\AudioWriter.cs" />
     <Compile Include="CustomControl\AudioRecordingTabControl.cs">
       <SubType>Component</SubType>
@@ -118,7 +130,7 @@
     <Compile Include="AppForm\RecordingForm.Designer.cs">
       <DependentUpon>RecordingForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Common\Logger.cs" />
+    <Compile Include="Common\AppLogger.cs" />
     <Compile Include="AppForm\LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +138,7 @@
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\AudioFileProperty.cs" />
+    <Compile Include="Data\AudioTestResult.cs" />
     <Compile Include="Login\PasswordRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +160,12 @@
     </Compile>
     <EmbeddedResource Include="AppForm\AppGates.resx">
       <DependentUpon>AppGates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppForm\AudioTesting.resx">
+      <DependentUpon>AudioTesting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AppForm\FunctionSelection.resx">
+      <DependentUpon>FunctionSelection.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AppForm\RecordingForm.resx">
       <DependentUpon>RecordingForm.cs</DependentUpon>
@@ -190,6 +209,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="microphone.ico" />
+    <None Include="Resources\Play.png" />
+    <None Include="Resources\Pause.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -198,6 +219,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\NAudio.Lame.1.0.9\build\NAudio.Lame.targets" Condition="Exists('..\packages\NAudio.Lame.1.0.9\build\NAudio.Lame.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

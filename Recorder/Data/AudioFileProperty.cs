@@ -11,7 +11,9 @@ namespace AudioRecorderApps.Data
     {
         public enum TranslateStatus{
             Not_Sent,
-            Sent
+            Sent,
+            Empty,
+            Error
         }
         private TimeSpan mAudioTime;
         public AudioFileProperty(string path)

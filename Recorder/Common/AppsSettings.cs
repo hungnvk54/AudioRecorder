@@ -57,7 +57,7 @@ namespace AudioRecorderApps
                 this.DataDir = Directory.GetCurrentDirectory();
             }
 
-            Logger.GetInstance().Logging.Info("save directory: " + this.DataDir);
+            AppLogger.GetInstance().Logging.Info("save directory: " + this.DataDir);
         }
         
         private string ReadSetting(string key, string defaultValue)
@@ -78,7 +78,7 @@ namespace AudioRecorderApps
 
         void AddUpdateAppSettings(string key, string value)
         {
-            Logger.GetInstance().Logging.Info(String.Format("Saving configure {0}:{1}", key, value));
+            AppLogger.GetInstance().Logging.Info(String.Format("Saving configure {0}:{1}", key, value));
             try
             {
                 var configFile = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
@@ -96,7 +96,7 @@ namespace AudioRecorderApps
             }
             catch (ConfigurationErrorsException)
             {
-                Logger.GetInstance().Logging.Error("Error writing app settings");
+                AppLogger.GetInstance().Logging.Error("Error writing app settings");
             }
         }
 

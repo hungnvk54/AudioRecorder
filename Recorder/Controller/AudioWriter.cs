@@ -34,7 +34,7 @@ namespace AudioRecorderApps.Controller
             }
             else
             {
-                Logger.GetInstance().Logging.Error("Unsupport type");
+                AppLogger.GetInstance().Logging.Error("Unsupport type");
             }
         }
 
