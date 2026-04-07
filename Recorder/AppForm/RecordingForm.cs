@@ -95,7 +95,7 @@ namespace AudioRecorderApps
             mBackgroundOfflineWorker.RunWorkerCompleted += worker_RunWorkerOfflineCompleted;
             mBackgroundOfflineWorker.ProgressChanged += WorkerPercentageStateChange;
 
-            AudioRecording_Tab.SelectedIndex = offlineRecordingTabIndex;
+            AudioRecording_Tab.SelectedIndex = onlineRecordingTabIndex;
     }
 
         private void BT_Start_Click(object sender, EventArgs e)
